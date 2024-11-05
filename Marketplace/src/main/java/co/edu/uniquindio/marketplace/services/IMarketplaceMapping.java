@@ -7,6 +7,9 @@ import co.edu.uniquindio.marketplace.model.Vendedor;
 
 import java.util.List;
 
+/**
+ *
+ */
 public interface IMarketplaceMapping {
     List<VendedorDto> getVendedoresDto(List<Vendedor> listaVendedores);
     VendedorDto vendedorToVendedorDto(Vendedor vendedor);

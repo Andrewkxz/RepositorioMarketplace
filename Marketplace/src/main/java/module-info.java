@@ -4,6 +4,6 @@ module co.edu.uniquindio.marketplace {
     requires javafx.web;
 
 
-    opens co.edu.uniquindio.marketplace to javafx.fxml;
+    opens co.edu.uniquindio.marketplace.viewcontroller to javafx.fxml;
     exports co.edu.uniquindio.marketplace;
 }

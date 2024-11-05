@@ -2,6 +2,9 @@ package co.edu.uniquindio.marketplace.services;
 
 import co.edu.uniquindio.marketplace.model.Vendedor;
 
+/**
+ *
+ */
 public interface ICrudVendedor {
     boolean crearVendedor(Vendedor newVendedor);
     boolean eliminarVendedor(String cedula);

@@ -45,62 +45,65 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1">
-  <children>
-    <MenuBar VBox.vgrow="NEVER">
-      <menus>
-        <Menu mnemonicParsing="false" text="File">
-          <items>
-            <MenuItem mnemonicParsing="false" text="New" />
-            <MenuItem mnemonicParsing="false" text="Open…" />
-            <Menu mnemonicParsing="false" text="Open Recent" />
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Close" />
-            <MenuItem mnemonicParsing="false" text="Save" />
-            <MenuItem mnemonicParsing="false" text="Save As…" />
-            <MenuItem mnemonicParsing="false" text="Revert" />
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Preferences…" />
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Quit" />
-          </items>
-        </Menu>
-        <Menu mnemonicParsing="false" text="Edit">
-          <items>
-            <MenuItem mnemonicParsing="false" text="Undo" />
-            <MenuItem mnemonicParsing="false" text="Redo" />
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Cut" />
-            <MenuItem mnemonicParsing="false" text="Copy" />
-            <MenuItem mnemonicParsing="false" text="Paste" />
-            <MenuItem mnemonicParsing="false" text="Delete" />
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Select All" />
-            <MenuItem mnemonicParsing="false" text="Unselect All" />
-          </items>
-        </Menu>
-        <Menu mnemonicParsing="false" text="Help">
-          <items>
-            <MenuItem mnemonicParsing="false" text="About MyHelloApp" />
-          </items>
-        </Menu>
-      </menus>
-    </MenuBar>
-    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
-         <children>
-            <Label layoutX="265.0" layoutY="14.0" text="Registro">
-               <font>
-                  <Font size="30.0" />
-               </font>
-            </Label>
-            <TextField layoutX="246.0" layoutY="80.0" promptText="Nombres" />
-            <TextField layoutX="246.0" layoutY="115.0" promptText="Apellidos" />
-            <TextField layoutX="245.0" layoutY="151.0" promptText="Cédula" />
-            <TextField layoutX="247.0" layoutY="187.0" promptText="Dirección" />
-            <ChoiceBox layoutX="247.0" layoutY="225.0" prefWidth="150.0" />
-            <PasswordField layoutX="248.0" layoutY="266.0" promptText="Contraseña" />
-            <Button layoutX="285.0" layoutY="310.0" mnemonicParsing="false" style="-fx-border-radius: 45; -fx-background-color: #375a7e;" text="Registrarse" textFill="WHITE" />
-         </children>
-    </AnchorPane>
-  </children>
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.marketplace.viewcontroller.RegistroViewController">
+    <children>
+        <MenuBar VBox.vgrow="NEVER">
+            <menus>
+                <Menu mnemonicParsing="false" text="File">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="New" />
+                        <MenuItem mnemonicParsing="false" text="Open…" />
+                        <Menu mnemonicParsing="false" text="Open Recent" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem mnemonicParsing="false" text="Close" />
+                        <MenuItem mnemonicParsing="false" text="Save" />
+                        <MenuItem mnemonicParsing="false" text="Save As…" />
+                        <MenuItem mnemonicParsing="false" text="Revert" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem mnemonicParsing="false" text="Preferences…" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem mnemonicParsing="false" text="Quit" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Edit">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="Undo" />
+                        <MenuItem mnemonicParsing="false" text="Redo" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem mnemonicParsing="false" text="Cut" />
+                        <MenuItem mnemonicParsing="false" text="Copy" />
+                        <MenuItem mnemonicParsing="false" text="Paste" />
+                        <MenuItem mnemonicParsing="false" text="Delete" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem mnemonicParsing="false" text="Select All" />
+                        <MenuItem mnemonicParsing="false" text="Unselect All" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Help">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="About MyHelloApp" />
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+        <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
+            <children>
+                <Label layoutX="265.0" layoutY="14.0" text="Registro">
+                    <font>
+                        <Font size="30.0" />
+                    </font>
+                </Label>
+                <TextField layoutX="246.0" layoutY="80.0" promptText="Nombres" fx:id="nombresField" />
+                <TextField layoutX="246.0" layoutY="115.0" promptText="Apellidos" fx:id="apellidosField" />
+                <TextField layoutX="246.0" layoutY="150.0" promptText="Cédula" fx:id="cedulaField" />
+                <TextField layoutX="246.0" layoutY="185.0" promptText="Dirección" fx:id="direccionField" />
+
+                <Label layoutX="246.0" layoutY="225.0" text="Tipo de Usuario:" />
+                <ChoiceBox layoutX="246.0" layoutY="245.0" prefWidth="150.0" fx:id="tipoUsuarioChoiceBox"/>
+
+                <PasswordField layoutX="246.0" layoutY="285.0" promptText="Contraseña" fx:id="contraseniaField" />
+                <Button layoutX="285.0" layoutY="325.0" mnemonicParsing="false" style="-fx-border-radius: 45; -fx-background-color: #375a7e;" text="Registrarse" textFill="WHITE" fx:id="registrarseButton"/>
+            </children>
+        </AnchorPane>
+    </children>
 </VBox>

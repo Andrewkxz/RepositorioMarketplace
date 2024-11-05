@@ -33,14 +33,13 @@ public class RegistroViewController {
 
     @FXML
     private void initialize() {
-        // Inicializa las opciones en el ChoiceBox
+
         tipoUsuarioChoiceBox.getItems().addAll("Vendedor", "Administrador");
 
-        // Define la acción del botón de registro
-        registrarseButton.setOnAction(event -> handleRegistro());
+        registrarseButton.setOnAction(event -> registro());
     }
 
-    private void handleRegistro() {
+    private void registro() {
         String nombres = nombresField.getText();
         String apellidos = apellidosField.getText();
         String cedula = cedulaField.getText();
@@ -48,14 +47,12 @@ public class RegistroViewController {
         String tipoUsuario = tipoUsuarioChoiceBox.getValue();
         String contrasena = contraseniaField.getText();
 
-        // Validación básica
         if (nombres.isEmpty() || apellidos.isEmpty() || cedula.isEmpty() || direccion.isEmpty() ||
                 tipoUsuario == null || contrasena.isEmpty()) {
             mostrarAlerta("Error", "Todos los campos son obligatorios");
             return;
         }
 
-        // Simula el registro exitoso (aquí podrías insertar lógica para guardar en una base de datos)
         System.out.println("Registro exitoso:");
         System.out.println("Nombres: " + nombres + ", Apellidos: " + apellidos +
                 ", Cédula: " + cedula + ", Dirección: " + direccion +

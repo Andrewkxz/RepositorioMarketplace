@@ -9,7 +9,16 @@ import co.edu.uniquindio.marketplace.services.IMarketplaceMapping;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ *
+ */
 public class MarketplaceMappingImpl implements IMarketplaceMapping {
+
+    /**
+     *
+     * @param listaVendedores
+     * @return
+     */
     @Override
     public List<VendedorDto> getVendedoresDto(List<Vendedor> listaVendedores) {
         if(listaVendedores == null){
@@ -24,6 +33,11 @@ public class MarketplaceMappingImpl implements IMarketplaceMapping {
         return vendedoresDto;
     }
 
+    /**
+     *
+     * @param vendedor
+     * @return
+     */
     @Override
     public VendedorDto vendedorToVendedorDto(Vendedor vendedor) {
         return new VendedorDto(
@@ -34,6 +48,11 @@ public class MarketplaceMappingImpl implements IMarketplaceMapping {
                 vendedor.getUsuario());
     }
 
+    /**
+     *
+     * @param vendedorDto
+     * @return
+     */
     @Override
     public Vendedor vendedorDtoToVendedor(VendedorDto vendedorDto) {
         return Vendedor.builder()
@@ -45,6 +64,11 @@ public class MarketplaceMappingImpl implements IMarketplaceMapping {
                 .build();
     }
 
+    /**
+     *
+     * @param listaProductos
+     * @return
+     */
     @Override
     public List<ProductoDto> getProductosDto(List<Producto> listaProductos) {
         if(listaProductos == null){
@@ -57,18 +81,30 @@ public class MarketplaceMappingImpl implements IMarketplaceMapping {
         return productosDto;
     }
 
+    /**
+     *
+     * @param producto
+     * @return
+     */
     @Override
     public ProductoDto productoToProductoDto(Producto producto) {
         return new ProductoDto(
+                producto.getIdProducto(),
                 producto.getNombre(),
                 producto.getImagen(),
                 producto.getPrecio(),
                 producto.getEstado());
     }
 
+    /**
+     *
+     * @param productoDto
+     * @return
+     */
     @Override
     public Producto productoDtoToProducto(ProductoDto productoDto) {
         return Producto.builder()
+                .idProducto(productoDto.idProducto())
                 .nombre(productoDto.nombre())
                 .imagen(productoDto.imagen())
                 .precio(productoDto.precio())

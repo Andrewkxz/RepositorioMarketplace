@@ -9,11 +9,18 @@ import co.edu.uniquindio.marketplace.services.IModelFactoryService;
 
 import java.util.List;
 
+/**
+ *
+ */
 public class ModelFactory implements IModelFactoryService {
     private static ModelFactory instance;
     Marketplace marketplace;
     MarketplaceMappingImpl mapper;
 
+    /**
+     *
+     * @return
+     */
     public static ModelFactory getInstance() {
         if (instance == null) {
             instance = new ModelFactory();
@@ -21,30 +28,48 @@ public class ModelFactory implements IModelFactoryService {
         return instance;
     }
 
+    /**
+     *
+     */
     private ModelFactory() {
         mapper = new MarketplaceMappingImpl();
         marketplace = inicializarDatos();
     }
 
+    /**
+     *
+     * @return
+     */
     public Marketplace getMarketplace() {
         return marketplace;
     }
 
+    /**
+     *
+     * @param marketplace
+     */
     public void setMarketplace(Marketplace marketplace) {
         this.marketplace = marketplace;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public List<VendedorDto> obtenerVendedoresDto() {
         return mapper.getVendedoresDto(getMarketplace().getListVendedores());
     }
 
+    /**
+     *
+     * @param vendedorDto
+     * @return
+     */
     @Override
     public boolean agregarVendedor(VendedorDto vendedorDto) {
-        if (getMarketplace().verificarVendedorExistente(vendedorDto.cedula())){
-
+        if (!getMarketplace().verificarVendedorExistente(vendedorDto.cedula())){
             Vendedor newVendedor = mapper.vendedorDtoToVendedor(vendedorDto);
-
             getMarketplace().crearVendedor(newVendedor);
             return true;
 
@@ -52,22 +77,60 @@ public class ModelFactory implements IModelFactoryService {
         return false;
     }
 
+    /**
+     *
+     * @param cedula
+     * @return
+     */
     @Override
     public boolean eliminarVendedor(String cedula) {
         return getMarketplace().eliminarVendedor(cedula);
     }
 
+    /**
+     *
+     * @param cedulaActual
+     * @param vendedorDto
+     * @return
+     */
     @Override
     public boolean actualizarVendedor(String cedulaActual, VendedorDto vendedorDto) {
-        if(!getMarketplace().verificarVendedorExistente(cedulaActual)){
+        if(getMarketplace().verificarVendedorExistente(cedulaActual)){
             Vendedor newVendedor = mapper.vendedorDtoToVendedor(vendedorDto);
-
-            getMarketplace().actualizarVendedor(cedulaActual, newVendedor);
-            return true;
+            return getMarketplace().actualizarVendedor(cedulaActual, newVendedor);
         }
         return false;
     }
 
+    /**
+     *
+     * @param texto
+     * @return
+     */
+    @Override
+    public VendedorDto buscarVendedor(String texto) {
+        for (Vendedor vendedor : getMarketplace().getListVendedores()) {
+            if (vendedor.getNombres().equals(texto) || vendedor.getApellidos().equals(texto) || vendedor.getCedula().equals(texto)) {
+                return mapper.vendedorToVendedorDto(vendedor);
+            }
+        }
+        return null;
+    }
+
+    /**
+     *
+     * @param cedula
+     * @return
+     */
+    @Override
+    public List<VendedorDto> sugerirVendedores(String cedula) {
+        return List.of();
+    }
+
+    /**
+     *
+     * @return
+     */
     public static Marketplace inicializarDatos() {
         Marketplace marketplace = new Marketplace();
         Usuario usuario1 = Usuario.builder()
@@ -112,7 +175,4 @@ public class ModelFactory implements IModelFactoryService {
 
         return marketplace;
     }
-
-
-
 }
