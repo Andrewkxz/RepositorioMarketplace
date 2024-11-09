@@ -1,5 +1,6 @@
 package co.edu.uniquindio.marketplace.controller;
 
+import co.edu.uniquindio.marketplace.factory.ModelFactory;
 import co.edu.uniquindio.marketplace.mapping.dto.ProductoDto;
 import co.edu.uniquindio.marketplace.model.Producto;
 import co.edu.uniquindio.marketplace.services.IProductoControllerService;
@@ -12,6 +13,13 @@ import java.util.stream.Collectors;
  *
  */
 public class ProductoController implements IProductoControllerService {
+    ModelFactory modelFactory;
+
+    public ProductoController(){
+        modelFactory = ModelFactory.getInstance();
+
+    }
+
     private List<Producto> productos = new ArrayList<>();
 
     /**
