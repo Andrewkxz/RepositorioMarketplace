@@ -32,12 +32,22 @@
   OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.marketplace.viewcontroller.LoginViewController">
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.marketplace.viewcontroller.LoginViewController">
     <children>
         <MenuBar VBox.vgrow="NEVER">
             <menus>
@@ -85,9 +95,9 @@
                 <ChoiceBox fx:id="rol" layoutX="228.0" layoutY="247.0" prefWidth="150.0" />
                 <Button fx:id="ingresar" layoutX="229.0" layoutY="296.0" mnemonicParsing="false" onAction="#ingresar" style="-fx-background-color: #375a7e;" text="Ingresar" textFill="WHITE" />
                 <Button fx:id="registrar" layoutX="315.0" layoutY="296.0" mnemonicParsing="false" onAction="#registro" style="-fx-background-color: #375a7e;" text="Registrar" textFill="WHITE" />
-                <ImageView fitHeight="81.0" fitWidth="94.0" layoutX="257.0" layoutY="76.0" pickOnBounds="true" preserveRatio="true">
+                <ImageView fitHeight="82.0" fitWidth="99.0" layoutX="259.0" layoutY="59.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@../../../../../../../../../Users/melor/Downloads/png-clipart-computer-icons-user-abstract-logo-miscellaneous-desktop-wallpaper-removebg-preview.png" />
+                        <Image url="@../../../../../../../../../../Users/brandon/Downloads/icon-removebg-preview.png" />
                     </image>
                 </ImageView>
                 <Label alignment="CENTER" layoutX="262.0" layoutY="14.0" prefHeight="38.0" prefWidth="83.0" text="Login" textAlignment="CENTER">
