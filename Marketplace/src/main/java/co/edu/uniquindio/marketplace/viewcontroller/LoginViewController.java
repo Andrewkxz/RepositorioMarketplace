@@ -1,5 +1,6 @@
 package co.edu.uniquindio.marketplace.viewcontroller;
 
+import co.edu.uniquindio.marketplace.factory.ModelFactory;
 import co.edu.uniquindio.marketplace.model.Marketplace;
 import co.edu.uniquindio.marketplace.model.Usuario;
 import javafx.event.ActionEvent;
@@ -14,6 +15,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class LoginViewController {
+    private Marketplace marketplace;
 
     @FXML
     private TextField usuario;
@@ -26,7 +28,6 @@ public class LoginViewController {
     @FXML
     private Button registrar;
 
-    private Marketplace marketplace;
 
     public LoginViewController() {
     }
@@ -46,17 +47,14 @@ public class LoginViewController {
         String contraseniaUsuario = contrasenia.getText();
         String rolUsuario = rol.getValue();
 
-        Usuario usuario = marketplace.buscarUsuario(nombreUsuario);
-
-        if (usuario != null && usuario.getContrasenia().equals(contraseniaUsuario) && usuario.getRol().equals(rolUsuario)) {
+        if(ModelFactory.getInstance().validarUsuario(nombreUsuario, contraseniaUsuario, rolUsuario)) {
             mostrarAlerta("Exito", "Inicio de sesión exitoso.", AlertType.INFORMATION);
-        } else if (usuario == null) {
-            mostrarAlerta("Error", "El usuario no existe. Por favor, regístrate.", AlertType.ERROR);
+            mostrarPaginaPrincipal(rolUsuario);
+        }else{
+            mostrarAlerta("Error","Usuario, contraseña o rol incorrecto.", AlertType.ERROR);
             mostrarPaginaRegistro();
-        } else {
-            mostrarAlerta("Error", "Usuario o contraseña incorrectos", AlertType.ERROR);
         }
-    }
+        }
 
     @FXML
     public void registro(ActionEvent event) {
@@ -69,7 +67,7 @@ public class LoginViewController {
             Parent root = loader.load();
 
             Scene scene = new Scene(root);
-            Stage stage = (Stage) ingresar.getScene().getWindow();
+            Stage stage = (Stage) usuario.getScene().getWindow();
 
             stage.setScene(scene);
             stage.show();
@@ -78,6 +76,25 @@ public class LoginViewController {
             mostrarAlerta("Error", "Error al mostrar el registro.", AlertType.ERROR);
         }
     }
+
+    private void mostrarPaginaPrincipal(String rolUsuario) {
+        try {
+            String fxmlFile = rolUsuario.equals("Vendedor") ? "/co/edu/uniquindio/marketplace/Muro.fxml" : "/co/edu/uniquindio/marketplace/Estadisticas.fxml";
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
+            Parent root = loader.load();
+
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) usuario.getScene().getWindow();
+
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            mostrarAlerta("Error", "Error al mostrar la página principal.", AlertType.ERROR);
+        }
+
+    }
+
 
     private void mostrarAlerta(String titulo, String contenido, Alert.AlertType tipoAlerta) {
         Alert alerta = new Alert(tipoAlerta);

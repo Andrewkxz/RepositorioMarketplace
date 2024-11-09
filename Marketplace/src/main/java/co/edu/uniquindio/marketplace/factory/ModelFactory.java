@@ -14,13 +14,15 @@ import java.util.List;
  */
 public class ModelFactory implements IModelFactoryService {
     private static ModelFactory instance;
-    Marketplace marketplace;
-    MarketplaceMappingImpl mapper;
+    private Marketplace marketplace;
+    private final MarketplaceMappingImpl mapper;
 
     /**
      *
      * @return
      */
+
+    //Patrón Singleton
     public static ModelFactory getInstance() {
         if (instance == null) {
             instance = new ModelFactory();
@@ -50,6 +52,16 @@ public class ModelFactory implements IModelFactoryService {
      */
     public void setMarketplace(Marketplace marketplace) {
         this.marketplace = marketplace;
+    }
+
+    public boolean validarUsuario(String usuario, String contrasenia, String rolUsuario){
+        for (Vendedor vendedor : marketplace.getListVendedores()){
+            Usuario usuario = vendedor.getUsuario();
+            if (usuario.getUsuario().equals(usuario) && usuario.getContrasenia().equals(contrasenia)){
+                return true;
+            }
+        }
+        return false;
     }
 
     /**
