@@ -90,22 +90,42 @@
         </MenuBar>
         <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
             <children>
-                <PasswordField fx:id="contrasenia" layoutX="229.0" layoutY="187.0" promptText="Contraseña" />
-                <TextField fx:id="usuario" layoutX="229.0" layoutY="145.0" promptText="Usuario" />
+            <ImageView fitHeight="488.0" fitWidth="665.0" layoutY="-6.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../../../../../Users/brandon/Downloads/What%20have%20you%20studied.png" />
+               </image>
+            </ImageView>
+                <PasswordField fx:id="contrasenia" layoutX="223.0" layoutY="187.0" prefHeight="25.0" prefWidth="156.0" promptText="Contraseña">
+               <font>
+                  <Font name="Karla Regular" size="12.0" />
+               </font></PasswordField>
+                <TextField fx:id="usuario" layoutX="223.0" layoutY="156.0" prefHeight="25.0" prefWidth="156.0" promptText="Usuario">
+               <font>
+                  <Font name="Karla Regular" size="12.0" />
+               </font></TextField>
                 <ChoiceBox fx:id="rol" layoutX="228.0" layoutY="247.0" prefWidth="150.0" />
-                <Button fx:id="ingresar" layoutX="229.0" layoutY="296.0" mnemonicParsing="false" onAction="#ingresar" style="-fx-background-color: #375a7e;" text="Ingresar" textFill="WHITE" />
-                <Button fx:id="registrar" layoutX="315.0" layoutY="296.0" mnemonicParsing="false" onAction="#registro" style="-fx-background-color: #375a7e;" text="Registrar" textFill="WHITE" />
+                <Button fx:id="ingresar" layoutX="229.0" layoutY="293.0" mnemonicParsing="false" onAction="#ingresar" prefHeight="25.0" prefWidth="66.0" style="-fx-background-color: #375a7e;" text="Ingresar" textFill="WHITE">
+               <font>
+                  <Font name="Karla Regular" size="12.0" />
+               </font></Button>
+                <Button fx:id="registrar" layoutX="314.0" layoutY="293.0" mnemonicParsing="false" onAction="#registro" prefHeight="25.0" prefWidth="66.0" style="-fx-background-color: #375a7e;" text="Registrar" textFill="WHITE">
+               <font>
+                  <Font name="Karla Regular" size="12.0" />
+               </font></Button>
                 <ImageView fitHeight="82.0" fitWidth="99.0" layoutX="259.0" layoutY="59.0" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@../../../../../../../../../../Users/brandon/Downloads/icon-removebg-preview.png" />
                     </image>
                 </ImageView>
-                <Label alignment="CENTER" layoutX="262.0" layoutY="14.0" prefHeight="38.0" prefWidth="83.0" text="Login" textAlignment="CENTER">
+                <Label alignment="CENTER" layoutX="262.0" layoutY="14.0" prefHeight="38.0" prefWidth="83.0" text="Login" textAlignment="CENTER" textFill="#375a7e">
                     <font>
-                        <Font size="30.0" />
+                        <Font name="Karla Regular" size="30.0" />
                     </font>
                 </Label>
-            <Label layoutX="263.0" layoutY="220.0" text="Tipo de usuario" />
+            <Label layoutX="261.0" layoutY="224.0" text="Tipo de usuario">
+               <font>
+                  <Font name="Karla Regular" size="12.0" />
+               </font></Label>
             </children>
         </AnchorPane>
     </children>

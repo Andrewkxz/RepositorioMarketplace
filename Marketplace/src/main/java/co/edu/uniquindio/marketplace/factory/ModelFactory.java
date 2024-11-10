@@ -33,7 +33,7 @@ public class ModelFactory implements IModelFactoryService {
     /**
      *
      */
-    private ModelFactory() {
+    public ModelFactory() {
         mapper = new MarketplaceMappingImpl();
         marketplace = inicializarDatos();
     }
@@ -52,17 +52,6 @@ public class ModelFactory implements IModelFactoryService {
      */
     public void setMarketplace(Marketplace marketplace) {
         this.marketplace = marketplace;
-    }
-
-    public boolean validarUsuario(String usuario, String contrasenia, String rolUsuario){
-        for (Vendedor vendedor : marketplace.getListVendedores()){
-            Usuario usuario = vendedor.getUsuario();
-
-            if (usuario != null && usuario.getUsuario().equals(usuario) && usuario.getContrasenia().equals(contrasenia) && usuario.getRol().equals(rolUsuario)){
-            return true;
-            }
-        }
-        return false;
     }
 
     /**

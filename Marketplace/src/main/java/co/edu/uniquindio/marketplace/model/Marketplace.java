@@ -1,5 +1,6 @@
 package co.edu.uniquindio.marketplace.model;
 
+import co.edu.uniquindio.marketplace.factory.ModelFactory;
 import co.edu.uniquindio.marketplace.services.ICrudVendedor;
 
 import java.util.ArrayList;
@@ -9,6 +10,7 @@ import java.util.List;
 /**
  *
  */
+
 public class Marketplace implements ICrudVendedor {
     private String nombre;
     private List<Vendedor> listVendedores = new ArrayList<>();

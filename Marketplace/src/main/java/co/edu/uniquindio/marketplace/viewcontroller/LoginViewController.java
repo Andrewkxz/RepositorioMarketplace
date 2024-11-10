@@ -50,14 +50,13 @@ public class LoginViewController {
         Usuario usuarioEncontrado = marketplace.buscarUsuario(nombreUsuario);
 
         if (usuarioEncontrado != null && usuarioEncontrado.getContrasenia().equals(contraseniaUsuario) && usuarioEncontrado.getRol().equals(rolUsuario)) {
-        mostrarAlerta("Éxito","Inicio de sesión exitoso", AlertType.INFORMATION);
+        mostrarAlerta("Éxito","Inicio de sesión exitoso.", AlertType.INFORMATION);
         mostrarPaginaRegistro();
 
         } else {
-            mostrarAlerta("Error","Usuario o contraseña incorrectos", AlertType.ERROR);
+            mostrarAlerta("Error","Usuario o contraseña incorrectos.", AlertType.ERROR);
 
         }
-
         }
 
     @FXML
