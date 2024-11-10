@@ -57,8 +57,9 @@ public class ModelFactory implements IModelFactoryService {
     public boolean validarUsuario(String usuario, String contrasenia, String rolUsuario){
         for (Vendedor vendedor : marketplace.getListVendedores()){
             Usuario usuario = vendedor.getUsuario();
-            if (usuario.getUsuario().equals(usuario) && usuario.getContrasenia().equals(contrasenia)){
-                return true;
+
+            if (usuario != null && usuario.getUsuario().equals(usuario) && usuario.getContrasenia().equals(contrasenia) && usuario.getRol().equals(rolUsuario)){
+            return true;
             }
         }
         return false;

@@ -47,13 +47,17 @@ public class LoginViewController {
         String contraseniaUsuario = contrasenia.getText();
         String rolUsuario = rol.getValue();
 
-        if(ModelFactory.getInstance().validarUsuario(nombreUsuario, contraseniaUsuario, rolUsuario)) {
-            mostrarAlerta("Exito", "Inicio de sesión exitoso.", AlertType.INFORMATION);
-            mostrarPaginaPrincipal(rolUsuario);
-        }else{
-            mostrarAlerta("Error","Usuario, contraseña o rol incorrecto.", AlertType.ERROR);
-            mostrarPaginaRegistro();
+        Usuario usuarioEncontrado = marketplace.buscarUsuario(nombreUsuario);
+
+        if (usuarioEncontrado != null && usuarioEncontrado.getContrasenia().equals(contraseniaUsuario) && usuarioEncontrado.getRol().equals(rolUsuario)) {
+        mostrarAlerta("Éxito","Inicio de sesión exitoso", AlertType.INFORMATION);
+        mostrarPaginaRegistro();
+
+        } else {
+            mostrarAlerta("Error","Usuario o contraseña incorrectos", AlertType.ERROR);
+
         }
+
         }
 
     @FXML
@@ -79,22 +83,24 @@ public class LoginViewController {
 
     private void mostrarPaginaPrincipal(String rolUsuario) {
         try {
-            String fxmlFile = rolUsuario.equals("Vendedor") ? "/co/edu/uniquindio/marketplace/Muro.fxml" : "/co/edu/uniquindio/marketplace/Estadisticas.fxml";
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
+            FXMLLoader loader;
+            if (rolUsuario.equals("Vendedor")) {
+                loader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/marketplace/Muro.fxml"));
+            } else {
+                loader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/marketplace/Estadisticas.fxml"));
+            }
             Parent root = loader.load();
-
             Scene scene = new Scene(root);
-            Stage stage = (Stage) usuario.getScene().getWindow();
+            Stage stage = (Stage) ingresar.getScene().getWindow();
 
             stage.setScene(scene);
             stage.show();
-        } catch (IOException e) {
+        }catch (IOException e){
             e.printStackTrace();
-            mostrarAlerta("Error", "Error al mostrar la página principal.", AlertType.ERROR);
+            mostrarAlerta("Error", "Error al cargar la página principal.", AlertType.ERROR);
         }
 
     }
-
 
     private void mostrarAlerta(String titulo, String contenido, Alert.AlertType tipoAlerta) {
         Alert alerta = new Alert(tipoAlerta);
