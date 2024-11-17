@@ -100,6 +100,7 @@ public class Estadisticas {
         }
         todasLasPublicaciones.sort((publicacion1, publicacion2) ->
                 Integer.compare(publicacion2.getCantidadLikes(), publicacion1.getCantidadLikes()));
+
         List<Producto> top10Productos = new ArrayList<>();
         for (int i = 0; i < Math.min(10, todasLasPublicaciones.size()); i++) {
             top10Productos.add(todasLasPublicaciones.get(i).getProducto());
@@ -118,17 +119,25 @@ public class Estadisticas {
      */
     public void exportarEstadisticas (String rutaArchivo, String nombreUsuario, LocalDate fechaInicio,
                                       LocalDate fechaFin, Vendedor vendedor1, Vendedor vendedor2) {
-        try(BufferedWriter writer = new BufferedWriter(new FileWriter(rutaArchivo))){
+
+        if (rutaArchivo == null || rutaArchivo.isEmpty()) {
+            throw new IllegalArgumentException("La ruta del archivo no puede estar vacía.");
+        }
+        try(BufferedWriter writer = new BufferedWriter(new FileWriter(rutaArchivo))) {
             writer.write("<Título> Reporte de Estadísticas\n");
             writer.write("<Fecha> Fecha: " + LocalDateTime.now() + "\n");
             writer.write("<Usuario> Reporte realizado por: " + nombreUsuario + "\n");
             writer.write("Información del reporte:\n");
+
+
             writer.write("Cantidad de productos publicados entre: " + fechaInicio + " y " + fechaFin + ": "
                     + cantidadProductosPublicados(fechaInicio, fechaFin) + "\n");
+
             writer.write("Cantidad mensajes entre vendedores: "
                     + cantidadMensajes(vendedor1, vendedor2) + "\n");
+
             writer.write("Cantidad de contactos por cada vendedor:\n");
-            HashMap<Vendedor, Integer> contactos = cantidadProductosPorVendedor();
+            Map<Vendedor, Integer> contactos = cantidadContactosPorVendedor();
             for (Map.Entry<Vendedor, Integer> entry : contactos.entrySet()) {
                 writer.write(entry.getKey().getNombres() + ": " + entry.getValue() + " contactos\n");
             }
@@ -140,6 +149,7 @@ public class Estadisticas {
             }
         } catch (IOException e) {
             e.printStackTrace();
+            System.err.println("Error al general el archivo de estadísticas.");
         }
     }
 
