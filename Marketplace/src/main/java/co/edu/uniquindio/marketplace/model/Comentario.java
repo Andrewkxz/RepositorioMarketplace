@@ -15,6 +15,7 @@ public class Comentario {
      *
      */
     public Comentario() {
+        this.fechaComentario = LocalDateTime.now();
     }
 
     /**
@@ -24,6 +25,12 @@ public class Comentario {
      * @param autor
      */
     public Comentario(int id, String contenido, Vendedor autor){
+        if (contenido == null || contenido.isEmpty()){
+            throw new IllegalArgumentException("El Contenido del comentario no puede estar vacio.");
+        }
+        if (autor == null){
+            throw new IllegalArgumentException("El Autor del comentario no puede ser nulo.");
+        }
         this.id = id;
         this.contenido = contenido;
         this.autor = autor;
@@ -43,6 +50,9 @@ public class Comentario {
      * @param id
      */
     public void setId(int id) {
+        if (id < 0){
+            throw new IllegalArgumentException("El id no puede ser negativo.");
+        }
         this.id = id;
     }
 
@@ -59,6 +69,9 @@ public class Comentario {
      * @param contenido
      */
     public void setContenido(String contenido) {
+        if(contenido == null || contenido.isEmpty()){
+            throw new IllegalArgumentException("El contenido del comentario no puede estar vacio.");
+        }
         this.contenido = contenido;
     }
 
@@ -75,6 +88,9 @@ public class Comentario {
      * @param autor
      */
     public void setAutor(Vendedor autor) {
+        if (autor == null){
+            throw new IllegalArgumentException("El Autor del comentario no puede ser nulo.");
+        }
         this.autor = autor;
     }
 
@@ -91,6 +107,17 @@ public class Comentario {
      * @param fechaComentario
      */
     public void setFechaComentario(LocalDateTime fechaComentario) {
+        if (fechaComentario == null || fechaComentario.isAfter(LocalDateTime.now())){
+            throw new IllegalArgumentException("La fecha del comentario no puede estar en el futuro");
+        }
         this.fechaComentario = fechaComentario;
+    }
+    @Override
+    public String toString() {
+        return "Comentario{" +
+                "id=" + id +
+                ", contenido='" + contenido + '\'' +
+                ", autor=" + (autor != null ? autor.getNombres() : "Sin autor") +
+                ", fechaComentario=" + fechaComentario + '}';
     }
 }

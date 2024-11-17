@@ -41,6 +41,8 @@
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -86,34 +88,39 @@
                 </Menu>
             </menus>
         </MenuBar>
-        <AnchorPane prefHeight="400.0" prefWidth="640.0" VBox.vgrow="ALWAYS" style="-fx-background-image: url('C:\Users\brandon\Pictures\proyecto/fondoazul.png'); -fx-background-size: cover;">
+        <AnchorPane prefHeight="400.0" prefWidth="640.0" style="-fx-background-image: url('/co/edu/uniquindio/marketplace/images/fondoazul.png'); -fx-background-size: cover;" VBox.vgrow="ALWAYS">
             <children>
-                <PasswordField fx:id="contrasenia" layoutX="223.0" layoutY="187.0" prefHeight="25.0" prefWidth="156.0" promptText="Contraseña" style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-text-fill: black;">
+            <ImageView fitHeight="383.0" fitWidth="640.0" layoutY="-5.0">
+               <image>
+                  <Image url="@images/fondoazul.png" />
+               </image>
+            </ImageView>
+                <PasswordField fx:id="contrasenia" layoutX="20.0" layoutY="163.0" prefHeight="25.0" prefWidth="156.0" promptText="Contraseña" style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-text-fill: black;">
                     <font>
                         <Font name="Karla Regular" size="12.0" />
                     </font>
                 </PasswordField>
-                <TextField fx:id="usuario" layoutX="223.0" layoutY="156.0" prefHeight="25.0" prefWidth="156.0" promptText="Usuario" style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-text-fill: black;">
+                <TextField fx:id="usuario" layoutX="20.0" layoutY="125.0" prefHeight="25.0" prefWidth="156.0" promptText="Usuario" style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-text-fill: black;">
                 <font>
                   <Font name="Karla Regular" size="12.0" />
                </font>
                 </TextField>
 
-                <ChoiceBox fx:id="rol" layoutX="228.0" layoutY="247.0" prefWidth="150.0" />
-                <Button fx:id="ingresar" layoutX="229.0" layoutY="293.0" mnemonicParsing="false" onAction="#ingresar" prefHeight="25.0" prefWidth="66.0" style="-fx-background-color: #375a7e;" text="Ingresar" textFill="WHITE">
+                <ChoiceBox fx:id="rol" layoutX="23.0" layoutY="236.0" prefWidth="150.0" />
+                <Button fx:id="ingresar" layoutX="24.0" layoutY="281.0" mnemonicParsing="false" onAction="#ingresar" prefHeight="25.0" prefWidth="66.0" style="-fx-background-color: #375a7e;" text="Ingresar" textFill="WHITE">
                <font>
                   <Font name="Karla Regular" size="12.0" />
                </font></Button>
-                <Button fx:id="registrar" layoutX="314.0" layoutY="293.0" mnemonicParsing="false" onAction="#registro" prefHeight="25.0" prefWidth="66.0" style="-fx-background-color: #375a7e;" text="Registrar" textFill="WHITE">
+                <Button fx:id="registrar" layoutX="108.0" layoutY="281.0" mnemonicParsing="false" onAction="#registro" prefHeight="25.0" prefWidth="66.0" style="-fx-background-color: #375a7e;" text="Registrar" textFill="WHITE">
                <font>
                   <Font name="Karla Regular" size="12.0" />
                </font></Button>
-                <Label alignment="CENTER" layoutX="262.0" layoutY="14.0" prefHeight="38.0" prefWidth="83.0" text="Login" textAlignment="CENTER" textFill="#375a7e">
+                <Label alignment="CENTER" layoutX="57.0" layoutY="70.0" prefHeight="38.0" prefWidth="83.0" text="Login" textAlignment="CENTER" textFill="#375a7e">
                     <font>
-                        <Font name="Karla Regular" size="30.0" />
+                        <Font name="Karla Regular" size="20.0" />
                     </font>
                 </Label>
-            <Label layoutX="261.0" layoutY="224.0" text="Tipo de usuario">
+            <Label layoutX="56.0" layoutY="212.0" text="Tipo de usuario">
                <font>
                   <Font name="Karla Regular" size="12.0" />
                </font></Label>

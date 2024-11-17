@@ -19,6 +19,7 @@ public class Producto {
      *
      */
     public Producto(){
+        this.fechaPublicacion = LocalDateTime.now();
     }
 
     /**
@@ -34,7 +35,7 @@ public class Producto {
         this.nombre = nombre;
         this.imagen = imagen;
         this.precio = precio;
-        this.estado = estado;
+        this.estado = estado != null ? estado : Estado.PUBLICADO;
         this.fechaPublicacion = LocalDateTime.now();
     }
 
@@ -53,7 +54,7 @@ public class Producto {
         if (this.estado == Estado.PUBLICADO){
             this.estado = Estado.VENDIDO;
         } else {
-            throw new IllegalStateException("El producto ya no se encuentra publicado");
+            throw new IllegalStateException("El producto no está disponible para la venta.");
         }
     }
 
@@ -64,7 +65,7 @@ public class Producto {
         if (this.estado == Estado.PUBLICADO){
             this.estado = Estado.CANCELADO;
         } else {
-            throw new IllegalStateException("El producto ya no se encuentra publicado");
+            throw new IllegalStateException("El producto no puede ser cancelado en este estado.");
         }
     }
     /**
@@ -127,7 +128,11 @@ public class Producto {
      *
      * @param precio
      */
+
     public void setPrecio(double precio) {
+        if (precio < 0){
+            throw new IllegalArgumentException("El precio no puede ser negativo.");
+        }
         this.precio = precio;
     }
 
@@ -159,7 +164,11 @@ public class Producto {
      *
      * @param fechaPublicacion
      */
+
     public void setFechaPublicacion(LocalDateTime fechaPublicacion) {
+        if (fechaPublicacion != null && fechaPublicacion.isAfter(LocalDateTime.now())){
+            throw new IllegalArgumentException("La fecha de publicación no puede estar en el futuro.");
+        }
         this.fechaPublicacion = fechaPublicacion;
     }
 

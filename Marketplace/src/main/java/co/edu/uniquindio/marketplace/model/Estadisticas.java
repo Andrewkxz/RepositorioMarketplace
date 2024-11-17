@@ -27,6 +27,9 @@ public class Estadisticas {
      * @return
      */
     public int cantidadMensajes (Vendedor vendedor1, Vendedor vendedor2) {
+       if (vendedor1 == null || vendedor2 == null) {
+           throw new IllegalArgumentException("Los vendedores no pueden ser nulos");
+       }
         int cantidad = 0;
         for (Chat chat : vendedor1.getChats()) {
             if (chat.getVendedor1().equals(vendedor2) && chat.getVendedor2().equals(vendedor1) ||
@@ -44,11 +47,17 @@ public class Estadisticas {
      * @return
      */
     public int cantidadProductosPublicados(LocalDate fechaInicio, LocalDate fechaFin) {
+        if (fechaInicio == null || fechaFin == null) {
+            throw new IllegalArgumentException("Los fechas no pueden ser nulas.");
+        }
+        if (fechaInicio.isAfter(fechaFin)) {
+            throw new IllegalArgumentException("La fecha de inicio no puede ser posterior a la fecha de fin.");
+        }
         int cantidad = 0;
         for (Vendedor vendedor : vendedores) {
             for (Producto producto : vendedor.listarProductos()){
-                if (producto.getFechaPublicacion().toLocalDate().isAfter(fechaInicio) &&
-                        producto.getFechaPublicacion().toLocalDate().isBefore(fechaFin)){
+                LocalDate fechaPublicacion = producto.getFechaPublicacion().toLocalDate();
+                if (!fechaPublicacion.isBefore(fechaInicio) && !fechaPublicacion.isAfter(fechaFin)) {
                     cantidad++;
                 }
             }
@@ -62,6 +71,9 @@ public class Estadisticas {
      * @return
      */
     public int cantidadProductosPorVendedor(Vendedor vendedor) {
+        if (vendedor == null) {
+            throw new IllegalArgumentException("El vendedor no puede ser nulos.");
+        }
         return vendedor.listarProductos().size();
     }
 
@@ -69,8 +81,8 @@ public class Estadisticas {
      *
      * @return
      */
-    public HashMap <Vendedor, Integer> cantidadProductosPorVendedor() {
-        HashMap <Vendedor, Integer> cantidadContactos = new HashMap();
+    public Map <Vendedor, Integer> cantidadContactosPorVendedor() {
+        Map <Vendedor, Integer> cantidadContactos = new HashMap<>();
         for (Vendedor vendedor : vendedores) {
             cantidadContactos.put(vendedor, vendedor.getContactos().size());
         }

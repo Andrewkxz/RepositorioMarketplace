@@ -6,35 +6,34 @@ import java.util.List;
 /**
  *
  */
-public class Administrador extends Persona{
+    public class Administrador extends Persona {
     private List<Vendedor> vendedores;
 
     /**
      *
      */
     public Administrador() {
+        this.vendedores = new ArrayList<>();
     }
 
     /**
-     *
      * @param nombres
      * @param apellidos
      * @param cedula
      * @param direccion
      * @param usuario
      */
-    public Administrador (String nombres, String apellidos, String cedula, String direccion, Usuario usuario){
+    public Administrador(String nombres, String apellidos, String cedula, String direccion, Usuario usuario) {
         super(nombres, apellidos, cedula, direccion, usuario);
         this.vendedores = new ArrayList<>();
     }
 
     /**
-     *
      * @param vendedor
      * @return
      */
-    public boolean agregarVendedor(Vendedor vendedor){
-        if (!vendedores.contains(vendedor)) {
+    public boolean agregarVendedor(Vendedor vendedor) {
+        if (vendedor != null && !vendedores.contains(vendedor)) {
             vendedores.add(vendedor);
             return true;
         }
@@ -46,14 +45,18 @@ public class Administrador extends Persona{
      * @param cedula
      * @return
      */
-    public boolean eliminarVendedor(String cedula){
-        return vendedores.removeIf(vendedor -> vendedor.getCedula().equals(cedula));
-    }
 
+    public boolean eliminarVendedor(String cedula) {
+        if (cedula != null && !cedula.isEmpty()) {
+            return vendedores.removeIf(vendedor -> vendedor.getCedula().equals(cedula));
+        }
+        return false;
+    }
     /**
      *
      * @return
      */
+
     public List<Vendedor> listarVendedores() {
         return new ArrayList<>(vendedores);
     }
@@ -64,7 +67,10 @@ public class Administrador extends Persona{
      * @param vendedorActualizado
      * @return
      */
-    public boolean actualizarVendedor(String id, Vendedor vendedorActualizado){
+    public boolean actualizarVendedor(String id, Vendedor vendedorActualizado) {
+        if (id == null || id.isEmpty() || vendedorActualizado == null) {
+            return false;
+        }
         for (int i = 0; i < vendedores.size(); i++) {
             if (vendedores.get(i).getCedula().equals(id)) {
                 vendedores.set(i, vendedorActualizado);
@@ -73,6 +79,7 @@ public class Administrador extends Persona{
         }
         return false;
     }
+
 
     /**
      *
@@ -91,7 +98,8 @@ public class Administrador extends Persona{
      * @param vendedores
      */
     public void setVendedores(List<Vendedor> vendedores) {
-        this.vendedores = vendedores;
+        if (vendedores != null){
+            this.vendedores = new ArrayList<>(vendedores);
+        }
     }
-
 }

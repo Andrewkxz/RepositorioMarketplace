@@ -13,7 +13,12 @@ public class Vendedor extends Persona {
     private List <Producto> productos;
     private List <Vendedor> contactos;
     private List <Chat> chats;
-    public Vendedor() {
+
+    public Vendedor(){
+        this.muro = new Muro();
+        this.productos = new ArrayList<>();
+        this.contactos = new ArrayList<>();
+        this.chats = new ArrayList<>();
     }
 
     /**
@@ -24,14 +29,14 @@ public class Vendedor extends Persona {
      * @param direccion
      * @param usuario
      */
-    public Vendedor(String nombres, String apellidos, String cedula, String direccion, Usuario usuario) {
+
+    public Vendedor (String nombres, String apellidos, String cedula, String direccion, Usuario usuario) {
         super(nombres, apellidos, cedula, direccion, usuario);
         this.muro = new Muro();
         this.productos = new ArrayList<>();
         this.contactos = new ArrayList<>();
         this.chats = new ArrayList<>();
     }
-
     /**
      *
      * @return
@@ -44,12 +49,27 @@ public class Vendedor extends Persona {
         return muro;
     }
 
+    /**
+     *
+     * @param publicacion
+     */
+
     public void agregarPublicacion(Publicacion publicacion) {
-        this.muro.agregarPublicacion(publicacion);
+        if (publicacion != null) {
+            this.muro.agregarPublicacion(publicacion);
+        }
+
     }
 
-    public void agregarChat(Chat chat) {
-        this.chats.add(chat);
+    /**
+     *
+     * @param chat
+     */
+
+    public void agregarChat (Chat chat) {
+        if (chat != null) {
+            this.chats.add(chat);
+        }
     }
 
     public List <Chat> getChats() {
@@ -61,8 +81,9 @@ public class Vendedor extends Persona {
      * @param vendedor
      * @return
      */
+
     public boolean agregarContacto(Vendedor vendedor) {
-        if (!contactos.contains(vendedor) && contactos.size() < 10) {
+        if (vendedor != null && !contactos.contains(vendedor) && contactos.size() < 10) {
             contactos.add(vendedor);
             vendedor.getContactos().add(this);
             return true;
@@ -75,8 +96,9 @@ public class Vendedor extends Persona {
      * @param vendedor
      * @return
      */
+
     public boolean eliminarContacto(Vendedor vendedor) {
-        if (contactos.contains(vendedor)){
+        if (vendedor != null && !contactos.contains(vendedor)) {
             contactos.remove(vendedor);
             vendedor.getContactos().remove(this);
             return true;
@@ -88,17 +110,21 @@ public class Vendedor extends Persona {
      *
      * @param producto
      */
-    public void agregarProducto(Producto producto){
-        productos.add(producto);
+    public void agregarProducto(Producto producto) {
+        if (producto != null){
+            productos.add(producto);
+    }
+
     }
 
     /**
      *
      * @return
      */
+
     public List<Producto> listarProductos(){
         if(productos.isEmpty()){
-            System.out.println("No hay productos");
+            System.out.println("No hay productos disponibles.");
         }else{
             for(Producto producto: productos){
                 System.out.println(producto);
