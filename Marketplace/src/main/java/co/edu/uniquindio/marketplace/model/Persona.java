@@ -24,7 +24,20 @@ public class Persona {
      * @param direccion
      * @param usuario
      */
-    public Persona(String nombres, String apellidos, String cedula, String direccion, Usuario usuario) {
+
+    public Persona (String nombres, String apellidos, String cedula, String direccion, Usuario usuario) {
+        if (nombres == null || nombres.isEmpty()) {
+            throw new IllegalArgumentException("Los nombres no pueden ser nulos o vacíos.");
+        }
+        if (apellidos == null || apellidos.isEmpty()) {
+            throw new IllegalArgumentException("Los apellidos no pueden ser nulos o vacíos.");
+        }
+        if (cedula == null || cedula.isEmpty()) {
+            throw new IllegalArgumentException("La cédula no puede ser nula o vacía.");
+        }
+        if (direccion == null || direccion.isEmpty()) {
+            throw new IllegalArgumentException("La dirección no puede ser nula o vacía");
+        }
         this.nombres = nombres;
         this.apellidos = apellidos;
         this.cedula = cedula;
@@ -45,6 +58,9 @@ public class Persona {
      * @param nombres
      */
     public void setNombres(String nombres) {
+        if (nombres == null || nombres.isEmpty()) {
+            throw new IllegalArgumentException("Los nombres no pueden ser nulos.");
+        }
         this.nombres = nombres;
     }
 
@@ -61,6 +77,9 @@ public class Persona {
      * @param apellidos
      */
     public void setApellidos(String apellidos) {
+        if (apellidos == null || apellidos.isEmpty()) {
+            throw new IllegalArgumentException("Los apellidos no pueden ser nulos.");
+        }
         this.apellidos = apellidos;
     }
 
@@ -77,6 +96,9 @@ public class Persona {
      * @param cedula
      */
     public void setCedula(String cedula) {
+        if (cedula == null || cedula.isEmpty()) {
+            throw new IllegalArgumentException("La cédula no pueden ser nulos.");
+        }
         this.cedula = cedula;
     }
 
@@ -93,6 +115,9 @@ public class Persona {
      * @param direccion
      */
     public void setDireccion(String direccion) {
+        if (direccion == null || direccion.isEmpty()) {
+            throw new IllegalArgumentException("La dirección no puede ser nula.");
+        }
         this.direccion = direccion;
     }
 

@@ -13,7 +13,7 @@ public class Muro {
      *
      */
     public Muro() {
-        publicaciones = new ArrayList<Publicacion>();
+        this.publicaciones = new ArrayList<>();
     }
 
     /**
@@ -21,6 +21,9 @@ public class Muro {
      * @param publicacion
      */
     public void agregarPublicacion(Publicacion publicacion) {
+        if (publicacion == null) {
+            throw new IllegalArgumentException("La publicación no puede ser nula.");
+        }
         publicaciones.add(publicacion);
     }
 
@@ -29,7 +32,7 @@ public class Muro {
      * @return
      */
     public List<Publicacion> getPublicaciones() {
-        return publicaciones;
+        return new ArrayList<>(publicaciones);
     }
 
     /**
@@ -47,6 +50,9 @@ public class Muro {
      * @param comentario
      */
     public void agregarComentario(Publicacion publicacion, Comentario comentario) {
+        if (publicacion == null || comentario == null) {
+            throw new IllegalArgumentException("La publicacion y el comentario no pueden ser nulos.");
+        }
         if (publicaciones.contains(publicacion)) {
             publicacion.agregarComentario(comentario);
         } else {

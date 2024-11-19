@@ -13,14 +13,18 @@ import java.util.List;
 
 public class Marketplace implements ICrudVendedor {
     private String nombre;
-    private List<Vendedor> listVendedores = new ArrayList<>();
-    private List<Administrador> listAdministradores = new ArrayList<>();
-    private List<Usuario> listUsuarios = new ArrayList<>();
+    private List<Vendedor> listVendedores;
+    private List<Administrador> listAdministradores;
+    private List<Usuario> listUsuarios;
 
     /**
      *
      */
+
     public Marketplace() {
+        this.listVendedores = new ArrayList<>();
+        this.listAdministradores = new ArrayList<>();
+        this.listUsuarios = new ArrayList<>();
     }
 
     /**
@@ -31,13 +35,32 @@ public class Marketplace implements ICrudVendedor {
         this.nombre = nombre;
     }
 
+    /**
+     *
+     *
+     * @param usuario
+     */
+
     public void agregarUsuario(Usuario usuario) {
+        if (usuario == null){
+            throw new IllegalArgumentException("El usuario no puede ser nulo.");
+        }
         listUsuarios.add(usuario);
     }
 
+    /**
+     *
+     *
+     * @param nombre
+     * @return
+     */
+
     public Usuario buscarUsuario(String nombre) {
+        if (nombre == null || nombre.isEmpty()){
+            throw new IllegalArgumentException("El nombre de usuario no puede ser vacío.");
+        }
         for (Usuario usuario : listUsuarios) {
-            if(usuario.getUsuario().equals(nombre)) {
+            if (usuario.getUsuario().equals(nombre)) {
                 return usuario;
             }
         }
@@ -84,13 +107,12 @@ public class Marketplace implements ICrudVendedor {
     @Override
     public boolean actualizarVendedor(String cedula, Vendedor vendedor) {
         Vendedor vendedorExistente = buscarVendedor(cedula);
-        if(vendedorExistente != null) {
+        if (vendedorExistente != null) {
             vendedorExistente.setCedula(vendedor.getCedula());
             vendedorExistente.setNombres(vendedor.getNombres());
             vendedorExistente.setApellidos(vendedor.getApellidos());
             vendedorExistente.setDireccion(vendedor.getDireccion());
             vendedorExistente.setUsuario(vendedor.getUsuario());
-
             return true;
         }
         return false;
@@ -103,8 +125,11 @@ public class Marketplace implements ICrudVendedor {
      */
     @Override
     public Vendedor buscarVendedor(String cedula) {
+        if (cedula == null || cedula.isEmpty()){
+            throw new IllegalArgumentException("La cédula no puede ser nula o vacía.");
+        }
         for (Vendedor vendedor : listVendedores){
-            if(vendedor.getCedula().equals(cedula)){
+            if (vendedor.getCedula().equals(cedula)) {
                 return vendedor;
             }
         }

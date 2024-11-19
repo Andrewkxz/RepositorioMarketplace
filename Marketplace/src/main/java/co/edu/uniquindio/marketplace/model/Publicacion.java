@@ -19,6 +19,10 @@ public class Publicacion {
      *
      */
     public Publicacion() {
+        this.fechaPublicacion = LocalDateTime.now();
+        this.cantidadLikes = 0;
+        this.usuariosQueDieronLike = new ArrayList<>();
+        this.comentarios = new ArrayList<>();
     }
 
     /**
@@ -27,6 +31,12 @@ public class Publicacion {
      * @param autor
      */
     public Publicacion (Producto producto, Vendedor autor) {
+        if (producto == null) {
+            throw new IllegalArgumentException("El producto no puede ser nulo.");
+        }
+        if (autor == null) {
+            throw new IllegalArgumentException("El autor no puede ser nulo.");
+        }
         this.producto = producto;
         this.autor = autor;
         this.fechaPublicacion = LocalDateTime.now();
@@ -40,6 +50,9 @@ public class Publicacion {
      * @param usuario
      */
     public void agregarLike(Vendedor usuario) {
+        if (usuario == null) {
+            throw new IllegalArgumentException("El usuario no puede ser nulo.");
+        }
         if(!usuariosQueDieronLike.contains(usuario)) {
             usuariosQueDieronLike.add(usuario);
             cantidadLikes++;
@@ -59,7 +72,7 @@ public class Publicacion {
      * @return
      */
     public List<Comentario> getComentarios() {
-        return comentarios;
+        return new ArrayList<> (comentarios);
     }
 
     /**
@@ -131,7 +144,7 @@ public class Publicacion {
      * @return
      */
     public List<Vendedor> getUsuariosQueDieronLike() {
-        return usuariosQueDieronLike;
+        return new ArrayList<>(usuariosQueDieronLike);
     }
 
     /**
