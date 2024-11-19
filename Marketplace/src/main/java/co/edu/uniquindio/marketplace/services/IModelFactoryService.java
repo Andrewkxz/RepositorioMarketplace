@@ -1,5 +1,6 @@
 package co.edu.uniquindio.marketplace.services;
 
+import co.edu.uniquindio.marketplace.mapping.dto.ProductoDto;
 import co.edu.uniquindio.marketplace.mapping.dto.VendedorDto;
 
 import java.util.List;

@@ -25,6 +25,18 @@ public class Persona {
      * @param usuario
      */
     public Persona(String nombres, String apellidos, String cedula, String direccion, Usuario usuario) {
+        if (nombres == null || nombres.isEmpty()){
+            throw new IllegalArgumentException("Los nombres no pueden ser nulos ni estar vacíos");
+        }
+        if (apellidos == null || apellidos.isEmpty()){
+            throw new IllegalArgumentException("Los apellidos no pueden ser nulos ni estar vacíos");
+        }
+        if (cedula == null || cedula.isEmpty()){
+            throw new IllegalStateException("La cedula no puede ser nula ni estar vacía");
+        }
+        if (direccion == null || direccion.isEmpty()){
+            throw new IllegalStateException("La dirección no puede ser nula ni estar vacía");
+        }
         this.nombres = nombres;
         this.apellidos = apellidos;
         this.cedula = cedula;
@@ -45,6 +57,9 @@ public class Persona {
      * @param nombres
      */
     public void setNombres(String nombres) {
+        if (nombres == null || nombres.isEmpty()){
+            throw new IllegalStateException("Los nombres no pueden ser nulos");
+        }
         this.nombres = nombres;
     }
 
@@ -61,6 +76,9 @@ public class Persona {
      * @param apellidos
      */
     public void setApellidos(String apellidos) {
+        if (apellidos == null || apellidos.isEmpty()){
+            throw new IllegalArgumentException("Los apellidos no pueden ser nulos ni estar vacíos");
+        }
         this.apellidos = apellidos;
     }
 
@@ -77,6 +95,9 @@ public class Persona {
      * @param cedula
      */
     public void setCedula(String cedula) {
+        if (cedula == null || cedula.isEmpty()){
+            throw new IllegalStateException("La cedula no puede ser nula ni estar vacía");
+        }
         this.cedula = cedula;
     }
 
@@ -93,6 +114,9 @@ public class Persona {
      * @param direccion
      */
     public void setDireccion(String direccion) {
+        if (direccion == null || direccion.isEmpty()){
+            throw new IllegalStateException("La dirección no puede ser nula ni estar vacía");
+        }
         this.direccion = direccion;
     }
 

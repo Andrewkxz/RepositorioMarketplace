@@ -7,7 +7,7 @@ import co.edu.uniquindio.marketplace.model.Producto;
  *
  */
 public class ProductoBuilder {
-    protected String idProducto;
+    protected String descripcion;
     protected String nombre;
     protected String imagen;
     protected double precio;
@@ -15,11 +15,11 @@ public class ProductoBuilder {
 
     /**
      *
-     * @param idProducto
+     * @param descripcion
      * @return
      */
-    public ProductoBuilder idProducto(String idProducto) {
-        this.idProducto = idProducto;
+    public ProductoBuilder descripcion(String descripcion) {
+        this.descripcion = descripcion;
         return this;
     }
 
@@ -68,6 +68,6 @@ public class ProductoBuilder {
      * @return
      */
     public Producto build(){
-        return new Producto(idProducto, nombre, imagen, precio, estado);
+        return new Producto(descripcion, nombre, imagen, precio, estado);
     }
 }

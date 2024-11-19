@@ -1,7 +1,9 @@
 package co.edu.uniquindio.marketplace.model;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  *
@@ -21,6 +23,9 @@ public class Muro {
      * @param publicacion
      */
     public void agregarPublicacion(Publicacion publicacion) {
+        if (publicacion == null) {
+            throw new IllegalArgumentException("La publicacion no puede ser nula");
+        }
         publicaciones.add(publicacion);
     }
 
@@ -34,11 +39,12 @@ public class Muro {
 
     /**
      *
+     * @return
      */
-    public void mostrarPublicacionesEnOrden() {
-        publicaciones.sort((publicacion1, publicacion2) ->
-                publicacion2.getFechaPublicacion().compareTo(publicacion1.getFechaPublicacion()));
-        publicaciones.forEach(System.out::println);
+    public List<Publicacion> mostrarPublicacionesEnOrden() {
+        return publicaciones.stream()
+                .sorted(Comparator.comparing(Publicacion::getFechaPublicacion).reversed())
+                .collect(Collectors.toList());
     }
 
     /**
@@ -47,6 +53,9 @@ public class Muro {
      * @param comentario
      */
     public void agregarComentario(Publicacion publicacion, Comentario comentario) {
+        if (publicacion == null || comentario == null) {
+            throw new IllegalArgumentException("La publicacion y el comentario no pueden ser nulos");
+        }
         if (publicaciones.contains(publicacion)) {
             publicacion.agregarComentario(comentario);
         } else {

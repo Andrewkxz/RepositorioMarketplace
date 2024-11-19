@@ -6,7 +6,6 @@ import java.time.LocalDateTime;
  *
  */
 public class Comentario {
-    private int id;
     private String contenido;
     private Vendedor autor;
     private LocalDateTime fechaComentario;
@@ -19,31 +18,19 @@ public class Comentario {
 
     /**
      *
-     * @param id
      * @param contenido
      * @param autor
      */
-    public Comentario(int id, String contenido, Vendedor autor){
-        this.id = id;
+    public Comentario(String contenido, Vendedor autor){
+        if (contenido == null || contenido.isEmpty()){
+            throw new IllegalArgumentException("El contenido del comentario no puede estar vacío");
+        }
+        if (autor == null){
+            throw new IllegalArgumentException("El autor del comentario es requerido");
+        }
         this.contenido = contenido;
         this.autor = autor;
         this.fechaComentario = LocalDateTime.now();
-    }
-
-    /**
-     *
-     * @return
-     */
-    public int getId() {
-        return id;
-    }
-
-    /**
-     *
-     * @param id
-     */
-    public void setId(int id) {
-        this.id = id;
     }
 
     /**
@@ -59,6 +46,9 @@ public class Comentario {
      * @param contenido
      */
     public void setContenido(String contenido) {
+        if (contenido == null || contenido.isEmpty()){
+            throw new IllegalArgumentException("El contenido del comentario no puede estar vacío");
+        }
         this.contenido = contenido;
     }
 
@@ -75,6 +65,9 @@ public class Comentario {
      * @param autor
      */
     public void setAutor(Vendedor autor) {
+        if (autor == null){
+            throw new IllegalArgumentException("El autor del comentario es requerido");
+        }
         this.autor = autor;
     }
 
@@ -91,6 +84,18 @@ public class Comentario {
      * @param fechaComentario
      */
     public void setFechaComentario(LocalDateTime fechaComentario) {
+        if (fechaComentario == null || fechaComentario.isAfter(LocalDateTime.now())){
+            throw new IllegalArgumentException("La fecha del comentario no puede ser posterior a la fecha actual");
+        }
         this.fechaComentario = fechaComentario;
+    }
+
+    @Override
+    public String toString() {
+        return "Comentario{" +
+                ", contenido='" + contenido + '\'' +
+                ", autor=" + (autor != null ? autor.getNombres() : "Sin autor") +
+                ", fechaComentario=" + fechaComentario +
+                '}';
     }
 }

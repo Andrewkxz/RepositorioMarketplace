@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
  *
  */
 public class Producto {
-    private String idProducto;
+    private String descripcion;
     private String nombre;
     private String imagen;
     private double precio;
@@ -18,23 +18,23 @@ public class Producto {
     /**
      *
      */
-    public Producto(){
+    public Producto(String nombre, String imagen, double precio, Estado estado){
     }
 
     /**
      *
-     * @param idProducto
+     * @param descripcion
      * @param nombre
      * @param imagen
      * @param precio
      * @param estado
      */
-    public Producto(String idProducto, String nombre, String imagen, double precio, Estado estado) {
-        this.idProducto = idProducto;
+    public Producto(String descripcion, String nombre, String imagen, double precio, Estado estado) {
+        this.descripcion = descripcion;
         this.nombre = nombre;
         this.imagen = imagen;
         this.precio = precio;
-        this.estado = estado;
+        this.estado = estado != null ? estado : Estado.PUBLICADO;
         this.fechaPublicacion = LocalDateTime.now();
     }
 
@@ -71,16 +71,16 @@ public class Producto {
      *
      * @return
      */
-    public String getIdProducto() {
-        return idProducto;
+    public String getDescripcion() {
+        return descripcion;
     }
 
     /**
      *
-     * @param idProducto
+     * @param descripcion
      */
-    public void setIdProducto(String idProducto) {
-        this.idProducto = idProducto;
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
     /**
@@ -128,6 +128,9 @@ public class Producto {
      * @param precio
      */
     public void setPrecio(double precio) {
+        if (precio < 0){
+            throw new IllegalArgumentException("El precio no puede ser negativo");
+        }
         this.precio = precio;
     }
 
@@ -157,20 +160,12 @@ public class Producto {
 
     /**
      *
-     * @param fechaPublicacion
-     */
-    public void setFechaPublicacion(LocalDateTime fechaPublicacion) {
-        this.fechaPublicacion = fechaPublicacion;
-    }
-
-    /**
-     *
      * @return
      */
     @Override
     public String toString() {
         return "Producto{" +
-                "idProducto='" + idProducto + '\'' +
+                "descripcion='" + descripcion + '\'' +
                 ", nombre='" + nombre + '\'' +
                 ", imagen='" + imagen + '\'' +
                 ", precio=" + precio +

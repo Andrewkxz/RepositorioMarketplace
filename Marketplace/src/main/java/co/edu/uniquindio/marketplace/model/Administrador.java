@@ -34,7 +34,7 @@ public class Administrador extends Persona{
      * @return
      */
     public boolean agregarVendedor(Vendedor vendedor){
-        if (!vendedores.contains(vendedor)) {
+        if (vendedor != null && !vendedores.contains(vendedor)) {
             vendedores.add(vendedor);
             return true;
         }
@@ -46,8 +46,11 @@ public class Administrador extends Persona{
      * @param cedula
      * @return
      */
-    public boolean eliminarVendedor(String cedula){
-        return vendedores.removeIf(vendedor -> vendedor.getCedula().equals(cedula));
+    public boolean eliminarVendedor(String cedula) {
+        if (cedula != null && !cedula.isEmpty()) {
+            return vendedores.removeIf(vendedor -> vendedor.getCedula().equals(cedula));
+        }
+        return false;
     }
 
     /**
@@ -65,6 +68,9 @@ public class Administrador extends Persona{
      * @return
      */
     public boolean actualizarVendedor(String id, Vendedor vendedorActualizado){
+        if (id == null || !id.isEmpty() || vendedorActualizado == null) {
+            return false;
+        }
         for (int i = 0; i < vendedores.size(); i++) {
             if (vendedores.get(i).getCedula().equals(id)) {
                 vendedores.set(i, vendedorActualizado);
@@ -91,7 +97,9 @@ public class Administrador extends Persona{
      * @param vendedores
      */
     public void setVendedores(List<Vendedor> vendedores) {
-        this.vendedores = vendedores;
+        if (vendedores != null && !vendedores.isEmpty()) {
+            this.vendedores = vendedores;
+        }
     }
 
 }

@@ -29,7 +29,6 @@ public class ProductoController implements IProductoControllerService {
     @Override
     public List<ProductoDto> getProductosDto() {
         return productos.stream().map(producto -> new ProductoDto(
-                producto.getIdProducto(),
                 producto.getNombre(),
                 producto.getImagen(),
                 producto.getPrecio(),
@@ -45,7 +44,6 @@ public class ProductoController implements IProductoControllerService {
     @Override
     public boolean agregarProducto(ProductoDto productoDto) {
         Producto producto = new Producto(
-                productoDto.idProducto(),
                 productoDto.nombre(),
                 productoDto.imagen(),
                 productoDto.precio(),

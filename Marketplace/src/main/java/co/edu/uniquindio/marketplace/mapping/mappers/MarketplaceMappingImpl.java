@@ -89,7 +89,6 @@ public class MarketplaceMappingImpl implements IMarketplaceMapping {
     @Override
     public ProductoDto productoToProductoDto(Producto producto) {
         return new ProductoDto(
-                producto.getIdProducto(),
                 producto.getNombre(),
                 producto.getImagen(),
                 producto.getPrecio(),
@@ -104,7 +103,6 @@ public class MarketplaceMappingImpl implements IMarketplaceMapping {
     @Override
     public Producto productoDtoToProducto(ProductoDto productoDto) {
         return Producto.builder()
-                .idProducto(productoDto.idProducto())
                 .nombre(productoDto.nombre())
                 .imagen(productoDto.imagen())
                 .precio(productoDto.precio())

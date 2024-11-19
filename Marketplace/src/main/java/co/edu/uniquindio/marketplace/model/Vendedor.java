@@ -1,6 +1,7 @@
 package co.edu.uniquindio.marketplace.model;
 
 import co.edu.uniquindio.marketplace.model.builder.VendedorBuilder;
+import co.edu.uniquindio.marketplace.services.Observer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,11 +9,12 @@ import java.util.List;
 /**
  *
  */
-public class Vendedor extends Persona {
+public class Vendedor extends Persona implements Observer {
     private Muro muro;
     private List <Producto> productos;
     private List <Vendedor> contactos;
     private List <Chat> chats;
+
     public Vendedor() {
     }
 
@@ -44,12 +46,18 @@ public class Vendedor extends Persona {
         return muro;
     }
 
-    public void agregarPublicacion(Publicacion publicacion) {
+    public void agregarPublicacion(Producto producto) {
+        if (producto == null) {
+            throw new NullPointerException("El producto es necesario para crear la publicación");
+        }
+        Publicacion publicacion = new Publicacion(producto, this);
         this.muro.agregarPublicacion(publicacion);
     }
 
     public void agregarChat(Chat chat) {
-        this.chats.add(chat);
+        if (chat != null) {
+            this.chats.add(chat);
+        }
     }
 
     public List <Chat> getChats() {
@@ -62,9 +70,9 @@ public class Vendedor extends Persona {
      * @return
      */
     public boolean agregarContacto(Vendedor vendedor) {
-        if (!contactos.contains(vendedor) && contactos.size() < 10) {
+        if (vendedor != null && !contactos.contains(vendedor) && contactos.size() < 10) {
             contactos.add(vendedor);
-            vendedor.getContactos().add(this);
+            vendedor.agregarContacto(this);
             return true;
         }
         return false;
@@ -76,7 +84,7 @@ public class Vendedor extends Persona {
      * @return
      */
     public boolean eliminarContacto(Vendedor vendedor) {
-        if (contactos.contains(vendedor)){
+        if (vendedor != null && contactos.contains(vendedor)){
             contactos.remove(vendedor);
             vendedor.getContactos().remove(this);
             return true;
@@ -89,7 +97,9 @@ public class Vendedor extends Persona {
      * @param producto
      */
     public void agregarProducto(Producto producto){
-        productos.add(producto);
+        if (producto != null){
+            productos.add(producto);
+        }
     }
 
     /**
@@ -121,5 +131,10 @@ public class Vendedor extends Persona {
      */
     public void setContactos(List<Vendedor> contactos) {
         this.contactos = contactos;
+    }
+
+    @Override
+    public void actualizacion(Publicacion publicacion) {
+        System.out.println("Nueva publicación de " + publicacion.getAutor().getNombres() + ": " + publicacion.getProducto().getNombre());
     }
 }

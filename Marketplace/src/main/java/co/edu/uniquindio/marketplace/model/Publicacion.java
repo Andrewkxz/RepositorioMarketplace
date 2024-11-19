@@ -27,6 +27,12 @@ public class Publicacion {
      * @param autor
      */
     public Publicacion (Producto producto, Vendedor autor) {
+        if (producto == null) {
+            throw new IllegalArgumentException("El producto es requerido");
+        }
+        if (autor == null) {
+            throw new IllegalArgumentException("El autor es requerido");
+        }
         this.producto = producto;
         this.autor = autor;
         this.fechaPublicacion = LocalDateTime.now();
@@ -40,6 +46,9 @@ public class Publicacion {
      * @param usuario
      */
     public void agregarLike(Vendedor usuario) {
+        if (usuario == null) {
+            throw new IllegalArgumentException("El usuario es requerido");
+        }
         if(!usuariosQueDieronLike.contains(usuario)) {
             usuariosQueDieronLike.add(usuario);
             cantidadLikes++;

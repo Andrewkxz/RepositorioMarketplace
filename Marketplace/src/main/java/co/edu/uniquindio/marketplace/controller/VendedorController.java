@@ -1,6 +1,7 @@
 package co.edu.uniquindio.marketplace.controller;
 
 import co.edu.uniquindio.marketplace.factory.ModelFactory;
+import co.edu.uniquindio.marketplace.mapping.dto.ProductoDto;
 import co.edu.uniquindio.marketplace.mapping.dto.VendedorDto;
 import co.edu.uniquindio.marketplace.services.IVendedorControllerService;
 
@@ -58,4 +59,5 @@ public class VendedorController implements IVendedorControllerService {
     public boolean eliminarVendedor(String cedula) {
         return modelFactory.eliminarVendedor(cedula);
     }
+
 }

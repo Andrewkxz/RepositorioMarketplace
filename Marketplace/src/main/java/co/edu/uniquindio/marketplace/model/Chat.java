@@ -7,8 +7,8 @@ import java.util.List;
  *
  */
 public class Chat {
-    private Vendedor vendedor1;
-    private Vendedor vendedor2;
+    private Vendedor emisor;
+    private Vendedor receptor;
     private List<Mensaje> mensajes;
 
     /**
@@ -19,20 +19,31 @@ public class Chat {
 
     /**
      *
-     * @param vendedor1
-     * @param vendedor2
+     * @param emisor
+     * @param receptor
      */
-    public Chat(Vendedor vendedor1, Vendedor vendedor2) {
-        this.vendedor1 = vendedor1;
-        this.vendedor2 = vendedor2;
+    public Chat(Vendedor emisor, Vendedor receptor) {
+        if (emisor == null || receptor == null) {
+            throw new IllegalStateException("Los vendedores no pueden ser nulos");
+        }
+        if (emisor.equals(receptor)) {
+            throw new IllegalStateException("Se requiere que ambos vendedores sean distintos entre sí para hacer un chat");
+        }
+        this.emisor = emisor;
+        this.receptor = receptor;
         this.mensajes = new ArrayList<>();
     }
 
     /**
      *
-     * @param mensaje
+     * @param contenido
+     * @param autor
      */
-    public void enviarMensaje(Mensaje mensaje){
+    public void enviarMensaje(String contenido, Vendedor autor){
+        if (contenido == null || contenido.isEmpty() || autor == null) {
+            throw new IllegalStateException("Todos los campos son requeridos");
+        }
+        Mensaje mensaje = new Mensaje(contenido, autor);
         this.mensajes.add(mensaje);
     }
 
@@ -40,32 +51,38 @@ public class Chat {
      *
      * @return
      */
-    public Vendedor getVendedor1() {
-        return vendedor1;
+    public Vendedor getEmisor() {
+        return emisor;
     }
 
     /**
      *
-     * @param vendedor1
+     * @param emisor
      */
-    public void setVendedor1(Vendedor vendedor1) {
-        this.vendedor1 = vendedor1;
+    public void setEmisor(Vendedor emisor) {
+        if (emisor == null) {
+            throw new IllegalStateException("Los vendedores no pueden ser nulos");
+        }
+        this.emisor = emisor;
     }
 
     /**
      *
      * @return
      */
-    public Vendedor getVendedor2() {
-        return vendedor2;
+    public Vendedor getReceptor() {
+        return receptor;
     }
 
     /**
      *
-     * @param vendedor2
+     * @param receptor
      */
-    public void setVendedor2(Vendedor vendedor2) {
-        this.vendedor2 = vendedor2;
+    public void setReceptor(Vendedor receptor) {
+        if (receptor == null) {
+            throw new IllegalStateException("Los vendedores no pueden ser nulos");
+        }
+        this.receptor = receptor;
     }
 
     /**
@@ -81,6 +98,18 @@ public class Chat {
      * @param mensajes
      */
     public void setMensajes(List<Mensaje> mensajes) {
+        if (mensajes == null) {
+            throw new IllegalStateException("La lista de mensajes no puede ser nula");
+        }
         this.mensajes = mensajes;
+    }
+
+    @Override
+    public String toString() {
+        return "Chat{" +
+                "vendedor1=" + emisor +
+                ", vendedor2=" + receptor +
+                ", cantidadMensajes=" + mensajes.size() +
+                '}';
     }
 }

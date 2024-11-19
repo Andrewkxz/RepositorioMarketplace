@@ -1,6 +1,7 @@
 package co.edu.uniquindio.marketplace.model;
 
 import co.edu.uniquindio.marketplace.factory.ModelFactory;
+import co.edu.uniquindio.marketplace.services.ICrudProducto;
 import co.edu.uniquindio.marketplace.services.ICrudVendedor;
 
 import java.util.ArrayList;
@@ -11,7 +12,7 @@ import java.util.List;
  *
  */
 
-public class Marketplace implements ICrudVendedor {
+public class Marketplace implements ICrudVendedor, ICrudProducto {
     private String nombre;
     private List<Vendedor> listVendedores = new ArrayList<>();
     private List<Administrador> listAdministradores = new ArrayList<>();
@@ -31,11 +32,33 @@ public class Marketplace implements ICrudVendedor {
         this.nombre = nombre;
     }
 
-    public void agregarUsuario(Usuario usuario) {
-        listUsuarios.add(usuario);
+
+    public boolean registrarUsuario(String nombres, String apellidos, String cedula, String direccion, String nombreUsuario, String contrasenia, String rol) {
+        for (Usuario usuario : listUsuarios) {
+            if (usuario.getContrasenia().equals(contrasenia)) {
+                return false;
+            }
+        }
+        Usuario nuevoUsuario = new Usuario(nombreUsuario, contrasenia, rol);
+
+        if (rol.equalsIgnoreCase("Vendedor")){
+            Vendedor vendedor = new Vendedor(nombres, apellidos, cedula, direccion, nuevoUsuario);
+            listVendedores.add(vendedor);
+            listUsuarios.add(nuevoUsuario);
+        }else if (rol.equalsIgnoreCase("Administrador")){
+            Administrador administrador = new Administrador(nombres, apellidos, cedula, direccion, nuevoUsuario);
+            listAdministradores.add(administrador);
+            listUsuarios.add(nuevoUsuario);
+        }else {
+            return false;
+        }
+        return true;
     }
 
     public Usuario buscarUsuario(String nombre) {
+        if (nombre == null || nombre.isEmpty()) {
+            throw new IllegalArgumentException("El nombre del usuario no puede ser vacío");
+        }
         for (Usuario usuario : listUsuarios) {
             if(usuario.getUsuario().equals(nombre)) {
                 return usuario;
@@ -103,6 +126,9 @@ public class Marketplace implements ICrudVendedor {
      */
     @Override
     public Vendedor buscarVendedor(String cedula) {
+        if (cedula == null || cedula.isEmpty()) {
+            throw new IllegalArgumentException("La cedula es requerida");
+        }
         for (Vendedor vendedor : listVendedores){
             if(vendedor.getCedula().equals(cedula)){
                 return vendedor;
@@ -189,5 +215,30 @@ public class Marketplace implements ICrudVendedor {
      */
     public void setListUsuarios(List<Usuario> listUsuarios) {
         this.listUsuarios = listUsuarios;
+    }
+
+    @Override
+    public boolean crearProducto(Producto newProducto) {
+        return false;
+    }
+
+    @Override
+    public boolean eliminarProducto(String id) {
+        return false;
+    }
+
+    @Override
+    public boolean actualizarProducto(String id, Producto producto) {
+        return false;
+    }
+
+    @Override
+    public Producto buscarProducto(String id) {
+        return null;
+    }
+
+    @Override
+    public boolean verificarProductoExistente(String idProducto) {
+        return false;
     }
 }
