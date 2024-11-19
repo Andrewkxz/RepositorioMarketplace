@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.GridPane?>
+
+<GridPane xmlns:fx="http://javafx.com/fxml"
+          fx:controller="co.edu.uniquindio.marketplace.viewcontroller.EstadisticasViewController"
+          hgap="10" vgap="10" alignment="center">
+    <Label text="Fecha de inicio:" GridPane.rowIndex="0" GridPane.columnIndex="0" />
+    <DatePicker fx:id="dpFechaInicio:" GridPane.rowIndex="0" GridPane.columnIndex="1" />
+    <Label text="Fecha fin:" GridPane.rowIndex="1" GridPane.columnIndex="0" />
+    <DatePicker fx:id="dpFechaFin" GridPane.rowIndex="1" GridPane.columnIndex="1" />
+    <Button text="Calcular productos" onAction="#calcularProductosPublicados"
+            GridPane.rowIndex="2" GridPane.columnIndex="1" />
+    <Label fx:id="lblCantidadProductos" text="Cantidad de productos publicados: --"
+           GridPane.rowIndex="2" GridPane.columnIndex="2" />
+
+    <Label text="Vendedor:" GridPane.rowIndex="3" GridPane.columnIndex="0" />
+    <ComboBox fx:id="cbVendedor" GridPane.rowIndex="3" GridPane.columnIndex="1" />
+
+    <Button text="Mostrar Top 10 productos" onAction="#mostrarTopProductos"
+         GridPane.rowIndex="4" GridPane.columnIndex="1" />
+    <ListView fx:id="lvTopProductos" GridPane.rowIndex="5" GridPane.columnIndex="1" />
+
+    <BarChart fx:id="chartProductosPorVendedor" title="Productos por vendedor"
+              GridPane.rowIndex="6" GridPane.columnIndex="0" GridPane.columnSpan="3">
+
+    <xAxis>
+        <CategoryAxis label="Vendedores" />
+    </xAxis>
+    <yAxis>
+        <NumberAxis label="Productos" />
+    </yAxis>
+
+    </BarChart>
+</GridPane>
+
+
