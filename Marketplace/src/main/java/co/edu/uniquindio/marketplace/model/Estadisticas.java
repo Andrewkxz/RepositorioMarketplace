@@ -22,6 +22,28 @@ public class Estadisticas {
 
     /**
      *
+     * @param vendedores
+     */
+
+    public void setVendedores(List<Vendedor> vendedores) {
+        if(vendedores == null){
+            throw new IllegalArgumentException("La lista de vendedores no puede ser nula.");
+        }
+        this.vendedores = vendedores;
+    }
+
+    /**
+     *
+     * @return lista de vendedores
+     */
+
+    public List<Vendedor> getVendedores() {
+        return vendedores;
+    }
+
+
+    /**
+     *
      * @param vendedor1
      * @param vendedor2
      * @return

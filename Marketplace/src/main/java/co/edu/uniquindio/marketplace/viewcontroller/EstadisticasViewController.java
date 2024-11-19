@@ -97,11 +97,4 @@ public class EstadisticasViewController {
         alerta.setContentText(contenido);
         alerta.showAndWait();
     }
-
-
-
-
-
-
-
 }
