@@ -13,6 +13,12 @@ public class Objeto {
      * @param idObjeto
      */
     public Objeto(String nombre, String idObjeto) {
+        if (nombre == null || nombre.isEmpty()){
+            throw new IllegalArgumentException("El nombre no puede ser nulo.");
+        }
+        if (idObjeto == null || idObjeto.isEmpty()){
+            throw new IllegalArgumentException("El idObjeto del objeto no puede ser nulo.");
+        }
         this.nombre = nombre;
         this.idObjeto = idObjeto;
     }
@@ -30,6 +36,9 @@ public class Objeto {
      * @param nombre
      */
     public void setNombre(String nombre) {
+        if (nombre == null || nombre.isEmpty()){
+            throw new IllegalArgumentException("El nombre no puede ser nulo.");
+        }
         this.nombre = nombre;
     }
 
@@ -46,6 +55,9 @@ public class Objeto {
      * @param idObjeto
      */
     public void setIdObjeto(String idObjeto) {
+        if (idObjeto == null || idObjeto.isEmpty()){
+            throw new IllegalArgumentException("El identificador del objeto no puede ser nulo.");
+        }
         this.idObjeto = idObjeto;
     }
 
