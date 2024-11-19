@@ -20,8 +20,18 @@ public class Usuario {
      *
      * @param usuario
      * @param contrasenia
+     * @param rol
      */
     public Usuario(String usuario, String contrasenia, String rol) {
+        if (usuario == null || usuario.isEmpty()) {
+            throw new IllegalArgumentException("El nombre de usuario no puede ser nulo.");
+        }
+        if (contrasenia == null || contrasenia.isEmpty()) {
+            throw new IllegalArgumentException("La contraseña no puede ser nula.");
+        }
+        if (rol == null || rol.isEmpty()) {
+            throw new IllegalArgumentException("El rol no puede ser nulo.");
+        }
         this.Usuario = usuario;
         this.contrasenia = contrasenia;
         this.rol = rol;
@@ -48,6 +58,9 @@ public class Usuario {
      * @param usuario
      */
     public void setUsuario(String usuario) {
+        if (usuario == null || usuario.isEmpty()) {
+            throw new IllegalArgumentException("El nombre de usuario no puede ser nulo.");
+        }
         Usuario = usuario;
     }
 
@@ -64,14 +77,34 @@ public class Usuario {
      * @param contrasenia
      */
     public void setContrasenia(String contrasenia) {
+        if (contrasenia == null || contrasenia.isEmpty()) {
+            throw new IllegalArgumentException("La contraseña no puede ser nula.");
+        }
         this.contrasenia = contrasenia;
     }
+
+
+    /**
+     *
+     *
+     * @return
+     */
 
     public String getRol() {
         return rol;
     }
 
+
+    /**
+     *
+     *
+     * @param rol
+     */
+
     public void setRol(String rol) {
+        if (rol == null || rol.isEmpty()) {
+            throw new IllegalArgumentException("El rol no puede ser nulo.");
+        }
         this.rol = rol;
     }
 
