@@ -1,9 +1,6 @@
 package co.edu.uniquindio.marketplace.viewcontroller;
 
-import co.edu.uniquindio.marketplace.model.Estadisticas;
-import co.edu.uniquindio.marketplace.model.Marketplace;
-import co.edu.uniquindio.marketplace.model.Producto;
-import co.edu.uniquindio.marketplace.model.Vendedor;
+import co.edu.uniquindio.marketplace.model.*;
 import javafx.fxml.FXML;
 import javafx.scene.chart.BarChart;
 import javafx.scene.control.*;
@@ -81,6 +78,18 @@ public class EstadisticasViewController {
                 series.getData().add(new BarChart.Data<>(vendedor.getNombres(),cantidad)));
 
         chartProductosPorVendedor.getData().add(series);
+    }
+
+    @FXML
+    private void exportarEstadisticas() {
+        try{
+            String rutaArchivo = "estadisticas.txt";
+            estadisticas.exportarEstadisticas(rutaArchivo, "Usuario", dpFechaInicio.getValue(), dpFechaFin.getValue(), cbVendedor.getValue(), null);
+            mostrarAlerta("Éxito", "Exportación completa", "Las estadisticas se han exportado correctamente.");
+        }catch(Exception e){
+            mostrarAlerta("Error", "No se pudieron exportar las estadísticas", e.getMessage());
+            e.printStackTrace();
+        }
     }
 
     /**
