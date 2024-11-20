@@ -7,19 +7,20 @@ import co.edu.uniquindio.marketplace.model.Producto;
  *
  */
 public class ProductoBuilder {
-    protected String descripcion;
+    protected String idProducto;
     protected String nombre;
     protected String imagen;
     protected double precio;
     protected Estado estado;
+    protected String descripcion;
 
     /**
      *
-     * @param descripcion
+     * @param idProducto
      * @return
      */
-    public ProductoBuilder descripcion(String descripcion) {
-        this.descripcion = descripcion;
+    public ProductoBuilder idProducto(String idProducto) {
+        this.idProducto = idProducto;
         return this;
     }
 
@@ -65,9 +66,23 @@ public class ProductoBuilder {
 
     /**
      *
+     * @param descripcion
+     * @return
+     */
+
+    public ProductoBuilder descripcion(String descripcion){
+        this.descripcion = descripcion;
+        return this;
+    }
+
+    /**
+     *
      * @return
      */
     public Producto build(){
-        return new Producto(descripcion, nombre, imagen, precio, estado);
+        if (idProducto == null || nombre == null){
+            throw new IllegalStateException("El ID y el nombre son obligatorios.");
+        }
+        return new Producto(idProducto, nombre, imagen, precio, estado, descripcion);
     }
 }

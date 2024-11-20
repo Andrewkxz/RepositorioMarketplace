@@ -15,6 +15,7 @@ public class Producto {
     private Estado estado;
     private LocalDateTime fechaPublicacion;
 
+
     /**
      *
      */
@@ -29,13 +30,14 @@ public class Producto {
      * @param precio
      * @param estado
      */
-    public Producto(String descripcion, String nombre, String imagen, double precio, Estado estado) {
+    public Producto(String nombre, String imagen, double precio, Estado estado, String descripcion) {
         this.descripcion = descripcion;
         this.nombre = nombre;
         this.imagen = imagen;
         this.precio = precio;
         this.estado = estado != null ? estado : Estado.PUBLICADO;
         this.fechaPublicacion = LocalDateTime.now();
+
     }
 
     /**
