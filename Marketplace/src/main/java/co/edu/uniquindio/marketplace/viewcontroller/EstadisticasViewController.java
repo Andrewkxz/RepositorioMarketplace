@@ -6,7 +6,10 @@ import javafx.scene.chart.BarChart;
 import javafx.scene.control.*;
 
 import java.time.LocalDate;
-
+/**
+ * Controlador de la vista de estadísticas del marketplace. Maneja la interacción con
+ * la interfaz gráfica para mostrar y calcular estadísticas relacionadas con los productos y vendedores.
+ */
 public class EstadisticasViewController {
 
     @FXML
@@ -34,8 +37,10 @@ public class EstadisticasViewController {
     private Estadisticas estadisticas;
 
     /**
+     * Inicializa el controlador con el marketplace y configura los datos iniciales.
+     * Carga la lista de vendedores en la interfaz.
      *
-     * @Param
+     * @param marketplace El objeto marketplace que contiene la información de la aplicación.
      */
     public void inicializar(Marketplace marketplace){
         this.marketplace = marketplace;
@@ -43,11 +48,16 @@ public class EstadisticasViewController {
         this.estadisticas.setVendedores (marketplace.getListVendedores());
         cargarVendedores();
     }
-
+    /**
+     * Carga los vendedores en el combo box de vendedores.
+     */
     private void cargarVendedores(){
         cbVendedor.getItems().addAll(marketplace.getListVendedores());
     }
-
+    /**
+     * Calcula la cantidad de productos publicados dentro del rango de fechas seleccionado.
+     * Muestra el resultado en la interfaz.
+     */
     @FXML
     private void calcularProductosPublicados(){
         LocalDate fechaInicio = dpFechaInicio.getValue();
@@ -60,13 +70,19 @@ public class EstadisticasViewController {
         int cantidad = estadisticas.cantidadProductosPublicados(fechaInicio, fechaFin);
         lblCantidadProductos.setText("Cantidad de productos publicados: " + cantidad);
     }
-
+    /**
+     * Muestra el top 10 de productos con más likes.
+     * Actualiza la lista de productos en la interfaz.
+     */
     @FXML
     private void mostrarTopProductos(){
         lvTopProductos.getItems().clear();
         lvTopProductos.getItems().addAll(estadisticas.top10ProductosConMasLikes());
     }
-
+    /**
+     * Genera un gráfico de barras que muestra la cantidad de productos por vendedor.
+     * Actualiza el gráfico en la interfaz.
+     */
     @FXML
     private void generarGraficoProductosPorVendedor(){
         chartProductosPorVendedor.getData().clear();
@@ -79,7 +95,11 @@ public class EstadisticasViewController {
 
         chartProductosPorVendedor.getData().add(series);
     }
-
+    /**
+     * Exporta las estadísticas seleccionadas a un archivo de texto.
+     *
+     * @throws Exception Si ocurre un error durante la exportación.
+     */
     @FXML
     private void exportarEstadisticas() {
         try{
@@ -92,13 +112,14 @@ public class EstadisticasViewController {
         }
     }
 
-    /**
-     *
-     * @param titulo
-     * @param cabecera
-     * @param contenido
-     */
 
+    /**
+     * Muestra una alerta en la interfaz con el título, encabezado y contenido especificados.
+     *
+     * @param titulo El título de la alerta.
+     * @param cabecera El encabezado de la alerta.
+     * @param contenido El contenido de la alerta.
+     */
     private void mostrarAlerta(String titulo, String cabecera, String contenido) {
         Alert alerta = new Alert(Alert.AlertType.ERROR);
         alerta.setTitle(titulo);
