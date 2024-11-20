@@ -2,37 +2,44 @@ package co.edu.uniquindio.marketplace.controller;
 
 import co.edu.uniquindio.marketplace.factory.ModelFactory;
 import co.edu.uniquindio.marketplace.mapping.dto.ProductoDto;
-import co.edu.uniquindio.marketplace.model.Estado;
 import co.edu.uniquindio.marketplace.model.Producto;
 import co.edu.uniquindio.marketplace.services.IProductoControllerService;
-import org.controlsfx.control.PropertySheet;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-/**
- *
- */
+/**Clase ProductoController la cual extiende de IProductoControllerService
+ Esta clase se encarga de gestionar la lista de productos, permitiendo agregar nuevos productos
+ y obtener la información de los mismos a través de objetos de transferencia de datos (DTO).
+ **/
 public class ProductoController implements IProductoControllerService {
+    // Instancia del ModelFactory para la creación de modelos.
     ModelFactory modelFactory;
 
-
+    /**
+     Constructor de la clase ProductoController.
+     Inicializa la instancia del ModelFactory y la lista de productos.
+     **/
     public ProductoController(){
         modelFactory = ModelFactory.getInstance();
 
     }
 
+    // Lista interna que almacena los productos de la tienda.
     private List<Producto> productos = new ArrayList<>();
 
     /**
-     *
-     * @return
-     */
+     Método que retorna la lista de productos en formato DTO.
+
+     Este método convierte los objetos de tipo Producto a objetos ProductoDto,
+     los cuales son más adecuados para ser enviados a las vistas o interfaces de usuario.
+
+     @return Una lista de objetos ProductoDto que representa la lista de productos.
+     **/
     @Override
     public List<ProductoDto> getProductosDto() {
         return productos.stream().map(producto -> new ProductoDto(
-                producto.getIdProducto(),
                 producto.getNombre(),
                 producto.getImagen(),
                 producto.getPrecio(),
@@ -41,73 +48,27 @@ public class ProductoController implements IProductoControllerService {
     }
 
     /**
-     *
-     * @param productoDto
-     * @return
-     */
+     Método que agrega un nuevo producto a la lista de productos.
+
+     Este método recibe un ProductoDto, lo convierte en un objeto Producto y lo agrega
+     a la lista interna de productos.
+
+     @param productoDto El objeto ProductoDto que contiene la información del nuevo producto.
+     @return Devuelve true si el producto se agrega correctamente a la lista, false en caso contrario.
+     **/
     @Override
     public boolean agregarProducto(ProductoDto productoDto) {
-        if (productoDto == null || productoDto.idProducto() == null || productoDto.idProducto().isEmpty()) {
-            throw new IllegalArgumentException("El ID del producto no puede ser nulo.");
-        }
-        if (productos.stream().anyMatch(p -> p.getIdProducto().equals(productoDto.idProducto()))) {
-            System.out.println("El producto con ID " + productoDto.idProducto() + " ya existe.");
-            return false;
-        }
         Producto producto = new Producto(
-                productoDto.idProducto(),
                 productoDto.nombre(),
                 productoDto.imagen(),
                 productoDto.precio(),
                 productoDto.estado()
         );
+
+        // Agrega el nuevo producto a la lista y retorna el resultado de la operación
+        // (true si se agrega, false si no).
         return productos.add(producto);
     }
-
-    public Producto buscarProducto (String idProducto) {
-        return productos.stream().filter(p -> p.getIdProducto().equals(idProducto)).findFirst().orElse(null);
-    }
-
-    public boolean eliminarProducto(String idProducto) {
-        Producto producto = buscarProducto(idProducto);
-        if (producto != null) {
-            return productos.remove(producto);
-        }
-        System.out.println("El producto con ID " + idProducto + " no encontrado.");
-        return false;
-    }
-    public boolean actualizarProducto(ProductoDto productoDto) {
-        Producto producto = buscarProducto(productoDto.idProducto());
-        if (producto != null) {
-            producto.setNombre(productoDto.nombre());
-            producto.setImagen(productoDto.imagen());
-            producto.setPrecio(productoDto.precio());
-            producto.setEstado(productoDto.estado());
-            return true;
-        }
-        System.out.println("El producto con ID " + productoDto.idProducto() + " no encontrado.");
-        return false;
-    }
-
-    public List <ProductoDto> getProductosPorEstado(Estado estado) {
-        return productos.stream()
-                .filter(producto -> producto.getEstado() == estado)
-                .map(producto -> new ProductoDto(
-                        producto.getIdProducto(),
-                        producto.getNombre(),
-                        producto.getImagen(),
-                        producto.getPrecio(),
-                        producto.getEstado()
-                ))
-                .collect(Collectors.toList());
-    }
-
-    private void cargarProductosIniciales(){
-        productos.add(new Producto("P001", "Laptop", "imagen1.png", 2500000, Estado.PUBLICADO));
-        productos.add(new Producto("P002", "Celular", "imagen2.png", 1500000, Estado.PUBLICADO));
-
-    }
-
 }
 
 
