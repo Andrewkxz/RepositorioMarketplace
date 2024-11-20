@@ -32,11 +32,20 @@
   OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.marketplace.viewcontroller.RegistroViewController">
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.marketplace.viewcontroller.RegistroViewController">
     <children>
         <MenuBar VBox.vgrow="NEVER">
             <menus>
@@ -79,24 +88,21 @@
         </MenuBar>
         <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
             <children>
-                <Label layoutX="266.0" text="Registro" textFill="#030303">
+                <Label layoutX="265.0" layoutY="14.0" text="Registro">
                     <font>
                         <Font size="30.0" />
                     </font>
                 </Label>
-                <TextField fx:id="nombresField" layoutX="246.0" layoutY="54.0" promptText="Nombres" />
-                <TextField fx:id="apellidosField" layoutX="246.0" layoutY="89.0" promptText="Apellidos" />
-                <TextField fx:id="cedulaField" layoutX="246.0" layoutY="128.0" promptText="Cédula" />
-                <TextField fx:id="direccionField" layoutX="246.0" layoutY="165.0" promptText="Dirección" />
+                <TextField layoutX="246.0" layoutY="80.0" promptText="Nombres" fx:id="nombresField" />
+                <TextField layoutX="246.0" layoutY="115.0" promptText="Apellidos" fx:id="apellidosField" />
+                <TextField layoutX="246.0" layoutY="150.0" promptText="Cédula" fx:id="cedulaField" />
+                <TextField layoutX="246.0" layoutY="185.0" promptText="Dirección" fx:id="direccionField" />
 
-                <Label layoutX="246.0" layoutY="225.0" />
-                <ChoiceBox id="tipoUsuario" fx:id="tipoUsuarioChoiceBox" accessibleHelp="Tipo de Usuario" accessibleRoleDescription="Tipo de Usuario" accessibleText="Tipo de Usuario" layoutX="246.0" layoutY="245.0" prefWidth="150.0" />
+                <Label layoutX="246.0" layoutY="225.0" text="Tipo de Usuario:" />
+                <ChoiceBox layoutX="246.0" layoutY="245.0" prefWidth="150.0" fx:id="tipoUsuarioChoiceBox"/>
 
-                <PasswordField fx:id="contraseniaField" layoutX="246.0" layoutY="285.0" promptText="Contraseña" />
-                <Button fx:id="registrarseButton" layoutX="285.0" layoutY="325.0" mnemonicParsing="false" style="-fx-border-radius: 45; -fx-background-color: #375a7e;" text="Registrarse" textFill="WHITE" />
-            <AnchorPane layoutY="-1.0" prefHeight="382.0" prefWidth="223.0" style="-fx-background-color: #375a7e;" />
-            <AnchorPane layoutX="419.0" layoutY="-1.0" prefHeight="382.0" prefWidth="223.0" style="-fx-background-color: #375a7e;" />
-            <TextField layoutX="248.0" layoutY="208.0" promptText="Usuario" />
+                <PasswordField layoutX="246.0" layoutY="285.0" promptText="Contraseña" fx:id="contraseniaField" />
+                <Button layoutX="285.0" layoutY="325.0" mnemonicParsing="false" style="-fx-border-radius: 45; -fx-background-color: #375a7e;" text="Registrarse" textFill="WHITE" fx:id="registrarseButton"/>
             </children>
         </AnchorPane>
     </children>

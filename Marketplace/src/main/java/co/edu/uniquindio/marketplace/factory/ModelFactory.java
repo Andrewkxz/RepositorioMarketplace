@@ -63,6 +63,25 @@ public class ModelFactory implements IModelFactoryService {
         return mapper.getVendedoresDto(getMarketplace().getListVendedores());
     }
 
+    /*public List<VendedorDto> obtenerProductosDto() {
+        return mapper.getProductosDto(getMarketplace().getListProductos());
+    }
+
+    @Override
+    public boolean agregarProducto(ProductoDto productoDto, VendedorDto vendedorDto) {
+        return false;
+    }
+
+    @Override
+    public boolean eliminarProducto(String cedula) {
+        return false;
+    }
+
+    @Override
+    public boolean actualizarProducto(ProductoDto productoDto, VendedorDto vendedorDto) {
+        return false;
+    }*/
+
     /**
      *
      * @param vendedorDto

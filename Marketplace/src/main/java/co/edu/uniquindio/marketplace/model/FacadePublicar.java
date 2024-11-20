@@ -10,7 +10,6 @@ public class FacadePublicar {
         publicaciones = new Publicacion();
         comentarios = new Comentario();
         mensajes = new Mensaje();
-        chats = new Chat();
     }
 
     public void crearPublicacion(Vendedor autor, Producto producto) {
@@ -29,12 +28,13 @@ public class FacadePublicar {
         }
     }
 
-    public void crearMensaje(Vendedor autor, String comentario) {
-        if(comentario !=null && !comentario.isEmpty()){
-            mensajes.setAutor(autor);
+    public void crearMensaje(Vendedor emisor, String comentario, Vendedor receptor) {
+        if(comentario !=null && !comentario.isEmpty()) {
+            mensajes.setAutor(emisor);
             mensajes.setContenido(comentario);
-            chats.enviarMensaje(comentario, autor);
-            System.out.println("Mensaje enviado por: " + autor.getNombres() + " con el comentario: " + comentario);
+            chats = new Chat(emisor, receptor);
+            chats.enviarMensaje(comentario, emisor);
+            System.out.println("Mensaje enviado por: " + emisor.getNombres() + " con el comentario: " + comentario);
         }
     }
 }

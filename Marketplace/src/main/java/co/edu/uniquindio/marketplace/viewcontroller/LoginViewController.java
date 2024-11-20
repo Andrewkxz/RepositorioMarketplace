@@ -65,7 +65,7 @@ public class LoginViewController {
 
     private void mostrarPaginaRegistro() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/marketplace/Registro.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/marketplace/RegistroPrueba.fxml"));
             Parent root = loader.load();
 
             Scene scene = new Scene(root);
