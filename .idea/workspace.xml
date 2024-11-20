@@ -4,7 +4,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c12cf51c-da61-48b2-858a-8cd1e8152d42" name="Changes" comment="Changes by juliano" />
+    <list default="true" id="c12cf51c-da61-48b2-858a-8cd1e8152d42" name="Changes" comment="doc de otras clases">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Marketplace/src/main/java/co/edu/uniquindio/marketplace/model/Muro.java" beforeDir="false" afterPath="$PROJECT_DIR$/Marketplace/src/main/java/co/edu/uniquindio/marketplace/model/Muro.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Marketplace/src/main/java/co/edu/uniquindio/marketplace/model/Objeto.java" beforeDir="false" afterPath="$PROJECT_DIR$/Marketplace/src/main/java/co/edu/uniquindio/marketplace/model/Objeto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Marketplace/src/main/java/co/edu/uniquindio/marketplace/model/Persona.java" beforeDir="false" afterPath="$PROJECT_DIR$/Marketplace/src/main/java/co/edu/uniquindio/marketplace/model/Persona.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Marketplace/src/main/java/co/edu/uniquindio/marketplace/model/Producto.java" beforeDir="false" afterPath="$PROJECT_DIR$/Marketplace/src/main/java/co/edu/uniquindio/marketplace/model/Producto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Marketplace/src/main/java/co/edu/uniquindio/marketplace/model/Publicacion.java" beforeDir="false" afterPath="$PROJECT_DIR$/Marketplace/src/main/java/co/edu/uniquindio/marketplace/model/Publicacion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Marketplace/src/main/java/co/edu/uniquindio/marketplace/model/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/Marketplace/src/main/java/co/edu/uniquindio/marketplace/model/Usuario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Marketplace/src/main/java/co/edu/uniquindio/marketplace/model/Vendedor.java" beforeDir="false" afterPath="$PROJECT_DIR$/Marketplace/src/main/java/co/edu/uniquindio/marketplace/model/Vendedor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Marketplace/src/main/java/co/edu/uniquindio/marketplace/services/AutenticacionAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/Marketplace/src/main/java/co/edu/uniquindio/marketplace/services/AutenticacionAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Marketplace/src/main/java/co/edu/uniquindio/marketplace/services/ICrudProducto.java" beforeDir="false" afterPath="$PROJECT_DIR$/Marketplace/src/main/java/co/edu/uniquindio/marketplace/services/ICrudProducto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Marketplace/src/main/java/co/edu/uniquindio/marketplace/services/ICrudVendedor.java" beforeDir="false" afterPath="$PROJECT_DIR$/Marketplace/src/main/java/co/edu/uniquindio/marketplace/services/ICrudVendedor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Marketplace/src/main/java/co/edu/uniquindio/marketplace/services/ILoginControllerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Marketplace/src/main/java/co/edu/uniquindio/marketplace/services/ILoginControllerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Marketplace/src/main/java/co/edu/uniquindio/marketplace/services/IMarketplaceMapping.java" beforeDir="false" afterPath="$PROJECT_DIR$/Marketplace/src/main/java/co/edu/uniquindio/marketplace/services/IMarketplaceMapping.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Marketplace/src/main/java/co/edu/uniquindio/marketplace/services/IModelFactoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Marketplace/src/main/java/co/edu/uniquindio/marketplace/services/IModelFactoryService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Marketplace/src/main/java/co/edu/uniquindio/marketplace/services/IProductoControllerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Marketplace/src/main/java/co/edu/uniquindio/marketplace/services/IProductoControllerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Marketplace/src/main/java/co/edu/uniquindio/marketplace/services/IVendedorControllerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Marketplace/src/main/java/co/edu/uniquindio/marketplace/services/IVendedorControllerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Marketplace/src/main/java/co/edu/uniquindio/marketplace/services/Observer.java" beforeDir="false" afterPath="$PROJECT_DIR$/Marketplace/src/main/java/co/edu/uniquindio/marketplace/services/Observer.java" afterDir="false" />
+    </list>
     <list id="fb4c63eb-9a05-48fd-bad7-786b67c90061" name="Changes by juliano" comment="Changes by juliano" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,6 +41,11 @@
   </component>
   <component name="Git.Settings">
     <option name="PUSH_AUTO_UPDATE" value="true" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="yer" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="UPDATE_TYPE" value="REBASE" />
   </component>
@@ -63,24 +86,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.MarketplaceApplication.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/melor/Downloads/RepositorioMarketplace&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.MarketplaceApplication.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "yeri",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/melor/Downloads/RepositorioMarketplace",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="" />
@@ -157,7 +180,15 @@
       <option name="project" value="LOCAL" />
       <updated>1730004760851</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="doc de otras clases">
+      <option name="closed" value="true" />
+      <created>1732074977939</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1732074977939</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -179,6 +210,7 @@
     <MESSAGE value="so" />
     <MESSAGE value="corrección de errores" />
     <MESSAGE value="Changes by juliano" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changes by juliano" />
+    <MESSAGE value="doc de otras clases" />
+    <option name="LAST_COMMIT_MESSAGE" value="doc de otras clases" />
   </component>
 </project>
