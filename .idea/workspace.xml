@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c12cf51c-da61-48b2-858a-8cd1e8152d42" name="Changes" comment="Changes by juliano">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="c12cf51c-da61-48b2-858a-8cd1e8152d42" name="Changes" comment="Documentacion ProductoController">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Marketplace/src/main/java/co/edu/uniquindio/marketplace/controller/ProductoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Marketplace/src/main/java/co/edu/uniquindio/marketplace/controller/ProductoController.java" afterDir="false" />
     </list>
     <list id="fb4c63eb-9a05-48fd-bad7-786b67c90061" name="Changes by juliano" comment="Changes by juliano" />
     <option name="SHOW_DIALOG" value="false" />
@@ -33,6 +31,7 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="ROOT_SYNC" value="DONT_SYNC" />
     <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -145,7 +144,7 @@
       <workItem from="1732053179226" duration="43000" />
       <workItem from="1732053225000" duration="44000" />
       <workItem from="1732053279658" duration="959000" />
-      <workItem from="1732061734143" duration="727000" />
+      <workItem from="1732061734143" duration="1443000" />
     </task>
     <task id="LOCAL-00001" summary="corrección de errores">
       <option name="closed" value="true" />
@@ -171,7 +170,23 @@
       <option name="project" value="LOCAL" />
       <updated>1730004760851</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Documentacion ProductoController">
+      <option name="closed" value="true" />
+      <created>1732062588753</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1732062588753</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Documentacion ProductoController">
+      <option name="closed" value="true" />
+      <created>1732062802954</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1732062802954</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -193,6 +208,7 @@
     <MESSAGE value="so" />
     <MESSAGE value="corrección de errores" />
     <MESSAGE value="Changes by juliano" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changes by juliano" />
+    <MESSAGE value="Documentacion ProductoController" />
+    <option name="LAST_COMMIT_MESSAGE" value="Documentacion ProductoController" />
   </component>
 </project>
