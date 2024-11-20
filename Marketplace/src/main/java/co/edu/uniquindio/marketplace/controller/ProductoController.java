@@ -9,25 +9,40 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-/**
- *
- */
+    /**
+    * Clase ProductoController la cual extiende de IProductoControllerService
+    Esta clase se encarga de gestionar la lista de productos, permitiendo agregar nuevos productos
+    y obtener la información de los mismos a través de objetos de transferencia de datos (DTO).
+    */
 public class ProductoController implements IProductoControllerService {
+
+    // Instancia del ModelFactory para la creación de modelos.
     ModelFactory modelFactory;
 
+    /**
+     * Constructor de la clase ProductoController.
+     * Inicializa la instancia del ModelFactory y la lista de productos.
+     */
+
     public ProductoController(){
-        modelFactory = ModelFactory.getInstance();
+        modelFactory = ModelFactory.getInstance();// Obtiene la instancia singleton de ModelFactory.
 
     }
-
+        // Lista interna que almacena los productos de la tienda.
     private List<Producto> productos = new ArrayList<>();
 
     /**
-     *
-     * @return
-     */
+         * Método que retorna la lista de productos en formato DTO.
+         *
+         * Este método convierte los objetos de tipo Producto a objetos ProductoDto,
+         * los cuales son más adecuados para ser enviados a las vistas o interfaces de usuario.
+         *
+         * @return Una lista de objetos ProductoDto que representa la lista de productos.
+         */
+
     @Override
     public List<ProductoDto> getProductosDto() {
+        // Utiliza Streams para convertir cada producto en un ProductoDto.
         return productos.stream().map(producto -> new ProductoDto(
                 producto.getNombre(),
                 producto.getImagen(),
@@ -36,11 +51,16 @@ public class ProductoController implements IProductoControllerService {
         )).collect(Collectors.toList());
     }
 
-    /**
-     *
-     * @param productoDto
-     * @return
-     */
+        /**
+         * Método que agrega un nuevo producto a la lista de productos.
+         *
+         * Este método recibe un ProductoDto, lo convierte en un objeto Producto y lo agrega
+         * a la lista interna de productos.
+         *
+         * @param productoDto El objeto ProductoDto que contiene la información del nuevo producto.
+         * @return Devuelve true si el producto se agrega correctamente a la lista, false en caso contrario.
+         */
+
     @Override
     public boolean agregarProducto(ProductoDto productoDto) {
         Producto producto = new Producto(
@@ -52,5 +72,6 @@ public class ProductoController implements IProductoControllerService {
         return productos.add(producto);
     }
 }
+
 
 
