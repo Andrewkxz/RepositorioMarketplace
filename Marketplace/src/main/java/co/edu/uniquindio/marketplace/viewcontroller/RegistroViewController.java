@@ -1,5 +1,7 @@
 package co.edu.uniquindio.marketplace.viewcontroller;
 
+import co.edu.uniquindio.marketplace.controller.RegistroController;
+import co.edu.uniquindio.marketplace.mapping.dto.VendedorDto;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -70,7 +72,7 @@ public class RegistroViewController {
     }
     private void mostrarPaginaMuro(){
         try{
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/marketplace/Muro.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/marketplace/MuroPrueba.fxml"));
             Parent root = loader.load();
 
             Scene scene = new Scene(root);
@@ -82,7 +84,7 @@ public class RegistroViewController {
             e.printStackTrace();
             mostrarAlerta("Error", "Error al mostrar la pagina");
         }
-}
+    }
     private void mostrarAlerta(String titulo, String mensaje) {
         Alert alerta = new Alert(AlertType.INFORMATION);
         alerta.setTitle(titulo);

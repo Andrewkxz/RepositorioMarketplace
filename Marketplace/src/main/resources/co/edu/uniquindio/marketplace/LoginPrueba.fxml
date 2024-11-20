@@ -32,11 +32,20 @@
   OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.marketplace.viewcontroller.RegistroViewController">
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.marketplace.viewcontroller.LoginViewController">
     <children>
         <MenuBar VBox.vgrow="NEVER">
             <menus>
@@ -77,26 +86,37 @@
                 </Menu>
             </menus>
         </MenuBar>
-        <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
+        <AnchorPane prefHeight="400.0" prefWidth="640.0" VBox.vgrow="ALWAYS" style="-fx-background-image: url('C:\Users\brandon\Pictures\proyecto/fondoazul.png'); -fx-background-size: cover;">
             <children>
-                <Label layoutX="266.0" text="Registro" textFill="#030303">
+                <PasswordField fx:id="contrasenia" layoutX="223.0" layoutY="187.0" prefHeight="25.0" prefWidth="156.0" promptText="Contraseña" style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-text-fill: black;">
                     <font>
-                        <Font size="30.0" />
+                        <Font name="Karla Regular" size="12.0" />
+                    </font>
+                </PasswordField>
+                <TextField fx:id="usuario" layoutX="223.0" layoutY="156.0" prefHeight="25.0" prefWidth="156.0" promptText="Usuario" style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-text-fill: black;">
+                    <font>
+                        <Font name="Karla Regular" size="12.0" />
+                    </font>
+                </TextField>
+
+                <ChoiceBox fx:id="rol" layoutX="228.0" layoutY="247.0" prefWidth="150.0" />
+                <Button fx:id="ingresar" layoutX="229.0" layoutY="293.0" mnemonicParsing="false" onAction="#ingresar" prefHeight="25.0" prefWidth="66.0" style="-fx-background-color: #375a7e;" text="Ingresar" textFill="WHITE">
+                    <font>
+                        <Font name="Karla Regular" size="12.0" />
+                    </font></Button>
+                <Button fx:id="registrar" layoutX="314.0" layoutY="293.0" mnemonicParsing="false" onAction="#registro" prefHeight="25.0" prefWidth="66.0" style="-fx-background-color: #375a7e;" text="Registrar" textFill="WHITE">
+                    <font>
+                        <Font name="Karla Regular" size="12.0" />
+                    </font></Button>
+                <Label alignment="CENTER" layoutX="262.0" layoutY="14.0" prefHeight="38.0" prefWidth="83.0" text="Login" textAlignment="CENTER" textFill="#375a7e">
+                    <font>
+                        <Font name="Karla Regular" size="30.0" />
                     </font>
                 </Label>
-                <TextField fx:id="nombresField" layoutX="246.0" layoutY="54.0" promptText="Nombres" />
-                <TextField fx:id="apellidosField" layoutX="246.0" layoutY="89.0" promptText="Apellidos" />
-                <TextField fx:id="cedulaField" layoutX="246.0" layoutY="128.0" promptText="Cédula" />
-                <TextField fx:id="direccionField" layoutX="246.0" layoutY="165.0" promptText="Dirección" />
-
-                <Label layoutX="246.0" layoutY="225.0" />
-                <ChoiceBox id="tipoUsuario" fx:id="tipoUsuarioChoiceBox" accessibleHelp="Tipo de Usuario" accessibleRoleDescription="Tipo de Usuario" accessibleText="Tipo de Usuario" layoutX="246.0" layoutY="245.0" prefWidth="150.0" />
-
-                <PasswordField fx:id="contraseniaField" layoutX="246.0" layoutY="285.0" promptText="Contraseña" />
-                <Button fx:id="registrarseButton" layoutX="285.0" layoutY="325.0" mnemonicParsing="false" style="-fx-border-radius: 45; -fx-background-color: #375a7e;" text="Registrarse" textFill="WHITE" />
-            <AnchorPane layoutY="-1.0" prefHeight="382.0" prefWidth="223.0" style="-fx-background-color: #375a7e;" />
-            <AnchorPane layoutX="419.0" layoutY="-1.0" prefHeight="382.0" prefWidth="223.0" style="-fx-background-color: #375a7e;" />
-            <TextField layoutX="248.0" layoutY="208.0" promptText="Usuario" />
+                <Label layoutX="261.0" layoutY="224.0" text="Tipo de usuario">
+                    <font>
+                        <Font name="Karla Regular" size="12.0" />
+                    </font></Label>
             </children>
         </AnchorPane>
     </children>

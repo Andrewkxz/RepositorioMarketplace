@@ -17,7 +17,7 @@ public class MarketplaceApplication extends Application {
     public void start(Stage primaryStage) throws Exception {
         marketplace = new Marketplace();
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/marketplace/Login.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/marketplace/LoginPrueba.fxml"));
         Parent root = loader.load();
 
         LoginViewController controller = loader.getController();

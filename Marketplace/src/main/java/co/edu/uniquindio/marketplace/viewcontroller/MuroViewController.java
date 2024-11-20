@@ -1,24 +1,18 @@
 package co.edu.uniquindio.marketplace.viewcontroller;
 
 import co.edu.uniquindio.marketplace.controller.VendedorController;
-import co.edu.uniquindio.marketplace.mapping.dto.ProductoDto;
 import co.edu.uniquindio.marketplace.mapping.dto.VendedorDto;
-import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
-import javafx.stage.Window;
 
 import java.io.IOException;
-import java.util.List;
 
 public class MuroViewController {
 
@@ -27,16 +21,16 @@ public class MuroViewController {
     VendedorController vendedorController;
 
     @FXML
-    private Button botonMuro;
+    private ImageView botonMuro;
 
     @FXML
-    private Button botonContactos;
+    private ImageView botonContactos;
 
     @FXML
-    private Button botonMisProductos;
+    private ImageView botonMisProductos;
 
     @FXML
-    private Button botonLogOut;
+    private ImageView botonLogOut;
 
     @FXML
     private AnchorPane anchorPaneMuro;
@@ -54,7 +48,7 @@ public class MuroViewController {
     private TabPane tabPane;
 
     @FXML
-    private Tab tabPaneVendedores;
+    private Tab tabVendedores;
 
     @FXML
     private Tab tabMuro;
@@ -62,24 +56,36 @@ public class MuroViewController {
     @FXML
     private Tab tabProductos;
 
-    public void onMuro(ActionEvent actionEvent) {
+    @FXML
+    private void initialize() {
+    }
+
+    public void onMuro(javafx.scene.input.MouseEvent mouseEvent) {
         tabPane.getSelectionModel().select(tabMuro);
     }
 
-    public void onCerrarSesion(ActionEvent actionEvent) {
-        cargarEscena("co/edu/uniquindio/marketplace/Login.fxml", actionEvent);
+    public void onVendedores(javafx.scene.input.MouseEvent mouseEvent) {
+        tabPane.getSelectionModel().select(tabVendedores);
     }
 
-    public void onProductos(ActionEvent actionEvent) throws IOException {
+    public void onProductos(javafx.scene.input.MouseEvent mouseEvent) {
         tabPane.getSelectionModel().select(tabProductos);
-        mostrarPublicaciones();
     }
 
-    public void onVendedores(ActionEvent actionEvent) {
-        tabPane.getSelectionModel().select(tabPaneVendedores);
+    public void onCerrarSesion(javafx.scene.input.MouseEvent mouseEvent) {
+        try{
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/marketplace/LoginPrueba.fxml"));
+            AnchorPane root = loader.load();
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) botonLogOut.getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
-    public void mostrarPublicaciones() throws IOException {
+    /*public void mostrarPublicaciones() throws IOException {
         int columnas = 0;
         int filas = 0;
         gridPaneProductos.getChildren().clear();
@@ -96,19 +102,6 @@ public class MuroViewController {
                 filas++;
             }
         }
-    }
+    }*/
 
-    private void cargarEscena (String url, Event actionEvent) {
-        try {
-            Stage stage = (Stage) ((javafx.scene.Node) actionEvent.getSource()).getScene().getWindow();
-            Parent root = FXMLLoader.load(getClass().getResource(url));
-            Scene scene = new Scene(root);
-
-            stage.setScene(scene);
-            stage.show();
-        } catch (Exception e){
-            e.printStackTrace();
-
-        }
-    }
 }

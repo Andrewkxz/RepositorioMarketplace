@@ -1,6 +1,8 @@
 package co.edu.uniquindio.marketplace.model;
 
 import co.edu.uniquindio.marketplace.factory.ModelFactory;
+import co.edu.uniquindio.marketplace.mapping.dto.UsuarioDto;
+import co.edu.uniquindio.marketplace.services.IAutenticacionProxy;
 import co.edu.uniquindio.marketplace.services.ICrudProducto;
 import co.edu.uniquindio.marketplace.services.ICrudVendedor;
 
@@ -12,11 +14,13 @@ import java.util.List;
  *
  */
 
-public class Marketplace implements ICrudVendedor, ICrudProducto {
+public class Marketplace implements ICrudVendedor, ICrudProducto, IAutenticacionProxy {
     private String nombre;
     private List<Vendedor> listVendedores = new ArrayList<>();
     private List<Administrador> listAdministradores = new ArrayList<>();
     private List<Usuario> listUsuarios = new ArrayList<>();
+    private Autenticacion autenticacion = new Autenticacion(getListVendedores());
+    private FacadePublicar facadePublicar = new FacadePublicar();
 
     /**
      *
@@ -53,6 +57,12 @@ public class Marketplace implements ICrudVendedor, ICrudProducto {
             return false;
         }
         return true;
+    }
+
+    public void interactuar (Vendedor emisor, Producto producto, String contenido, Vendedor receptor) {
+        facadePublicar.crearPublicacion(emisor,producto);
+        facadePublicar.crearComentario(emisor, contenido);
+        facadePublicar.crearMensaje(emisor,contenido,receptor);
     }
 
     public Usuario buscarUsuario(String nombre) {
@@ -240,5 +250,18 @@ public class Marketplace implements ICrudVendedor, ICrudProducto {
     @Override
     public boolean verificarProductoExistente(String idProducto) {
         return false;
+    }
+
+    @Override
+    public boolean autenticar(UsuarioDto usuarioDto) {
+        String usuario = usuarioDto.usuario();
+        System.out.printf("Verificando que el usuario: " + usuario + "no exista");
+        boolean permitirAcceso = autenticacion.autenticar(usuarioDto);
+        if (permitirAcceso) {
+            System.out.printf("Acceso permitido para el usuario: " + usuario);
+        } else {
+            System.out.println("Acceso denegado para el usuario: " + usuario);
+        }
+        return permitirAcceso;
     }
 }
